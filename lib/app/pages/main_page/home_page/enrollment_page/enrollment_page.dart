@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-// import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:webinar/app/pages/main_page/main_page.dart';
 import 'package:webinar/common/common.dart';
-import 'dart:convert';
 
 import '../../../../../common/components.dart';
 import '../../../../../common/utils/constants.dart';
-import '../../../../../common/utils/object_instance.dart';
-import '../../../../../config/assets.dart';
 import '../../../../../config/colors.dart';
 import '../../../../providers/drawer_provider.dart';
 import '../../../../services/guest_service/course_service.dart';
 
-
-
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart' as mlkit;
 
 class EnrollmentPage extends StatefulWidget {
   static const String pageName = '/enrollment';
@@ -28,7 +23,7 @@ class EnrollmentPage extends StatefulWidget {
 }
 
 class _EnrollmentPageState extends State<EnrollmentPage> {
-  TextEditingController _codeController = TextEditingController();
+  final TextEditingController _codeController = TextEditingController();
 
   bool isLoading = false;
 
@@ -36,21 +31,21 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
     setState(() {
       isLoading = true;
     });
-    final url = '${Constants.baseUrl}panel/use-code-course';
+    const url = '${Constants.baseUrl}panel/use-code-course';
 
     // إرسال البيانات في الـ body
     bool  response = await CourseService.enrollment(url, code);
     // التحقق من الاستجابة
-    if (response) {
+    if (response && mounted) {
       nextRoute(MainPage.pageName,);
       // يمكنك هنا إضافة كود للعرض الناجح
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Code sent successfully!')),
+        const SnackBar(content: Text('Code sent successfully!')),
       );
-    } else {
+    } else if (mounted) {
       // يمكنك هنا إضافة كود للخطأ
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to send code!')),
+        const SnackBar(content: Text('Failed to send code!')),
       );
     }
         setState(() {
@@ -85,8 +80,8 @@ class _EnrollmentPageState extends State<EnrollmentPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Please enter the code below:'),
-                  SizedBox(height: 20),
+                  const Text('Please enter the code below:'),
+                  const SizedBox(height: 20),
                   // TextField(
                   //   controller: _codeController,
                   //   decoration: InputDecoration(
@@ -100,7 +95,7 @@ Row(
     Expanded(
       child: TextField(
         controller: _codeController,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           labelText: 'Code',
           border: OutlineInputBorder(),
         ),
@@ -125,13 +120,13 @@ Row(
 ),
 
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                     if (isLoading)
-                      CircularProgressIndicator(color: mainColor(),)
+                      CircularProgressIndicator(color: mainColor())
                     else
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(mainColor()),
+                      backgroundColor: WidgetStateProperty.all<Color>(mainColor()),
                     ),
                     onPressed: () {
                       String code = _codeController.text.trim();
@@ -140,11 +135,11 @@ Row(
                       } else {
                         // إذا الكود فارغ
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Please enter a code')),
+                          const SnackBar(content: Text('Please enter a code')),
                         );
                       }
                     },
-                    child: Text('Send Code'),
+                    child: const Text('Send Code'),
                   ),
                 ],
               ),
@@ -186,23 +181,150 @@ class _QRScanPageState extends State<QRScanPage> {
     super.dispose();
   }
 
+  // دالة لرفع صورة من المعرض
+  Future<void> _pickImageFromGallery() async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      
+      if (image != null) {
+        // قراءة QR code من الصورة المختارة
+        await _scanQRFromImage(image.path);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('خطأ في اختيار الصورة: $e')),
+        );
+      }
+    }
+  }
+
+  // دالة لقراءة QR code من صورة
+  Future<void> _scanQRFromImage(String imagePath) async {
+    try {
+      // إنشاء InputImage من مسار الصورة
+      final inputImage = mlkit.InputImage.fromFilePath(imagePath);
+      
+      // إنشاء barcode scanner
+      final barcodeScanner = mlkit.BarcodeScanner();
+      
+      // مسح الصورة للبحث عن barcodes
+      final List<mlkit.Barcode> barcodes = await barcodeScanner.processImage(inputImage);
+      
+      // إغلاق الماسح الضوئي
+      barcodeScanner.close();
+      
+      if (barcodes.isNotEmpty) {
+        // العثور على QR code
+        final String? qrCode = barcodes.first.rawValue;
+        
+        if (qrCode != null && !isScanned && mounted) {
+          setState(() => isScanned = true);
+          if (mounted) {
+            Navigator.pop(context, qrCode);
+          }
+        } else if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('لم يتم العثور على بيانات صالحة في QR code')),
+          );
+        }
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('لم يتم العثور على QR code في الصورة المختارة')),
+        );
+      }
+      
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('خطأ في قراءة الصورة: $e')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar(title: 'امسح الكود'),
-      body: MobileScanner(
-        controller: cameraController,
-        onDetect: (BarcodeCapture capture) {
-          if (isScanned) return;
-          final List<Barcode> barcodes = capture.barcodes;
-          if (barcodes.isNotEmpty) {
-            final String? code = barcodes.first.rawValue;
-            if (code != null) {
-              setState(() => isScanned = true);
-              Navigator.pop(context, code);
-            }
-          }
-        },
+      body: Stack(
+        children: [
+          // كاميرا المسح المباشر
+          MobileScanner(
+            controller: cameraController,
+            onDetect: (BarcodeCapture capture) {
+              if (isScanned) return;
+              final List<Barcode> barcodes = capture.barcodes;
+              if (barcodes.isNotEmpty) {
+                final String? code = barcodes.first.rawValue;
+                if (code != null) {
+                  setState(() => isScanned = true);
+                  Navigator.pop(context, code);
+                }
+              }
+            },
+          ),
+          
+          // أزرار التحكم
+          Positioned(
+            bottom: 50,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // زر رفع صورة من المعرض
+                FloatingActionButton.extended(
+                  onPressed: _pickImageFromGallery,
+                  backgroundColor: Colors.yellow,
+                  icon: const Icon(Icons.photo_library, color: Colors.black45),
+                  label: const Text(
+                    'رفع صورة',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+                
+                // زر تشغيل/إيقاف الفلاش
+                FloatingActionButton(
+                  onPressed: () => cameraController.toggleTorch(),
+                  backgroundColor: Colors.grey[800],
+                  child: const Icon(Icons.flash_on, color: Colors.white),
+                ),
+                
+                // زر تبديل الكاميرا
+                FloatingActionButton(
+                  onPressed: () => cameraController.switchCamera(),
+                  backgroundColor: Colors.grey[800],
+                  child: const Icon(Icons.camera_front, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+          
+          // إرشادات للمستخدم
+          Positioned(
+            top: 50,
+            left: 20,
+            right: 20,
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Text(
+                'وجه الكاميرا نحو QR Code أو اضغط "رفع صورة" لاختيار صورة من المعرض',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

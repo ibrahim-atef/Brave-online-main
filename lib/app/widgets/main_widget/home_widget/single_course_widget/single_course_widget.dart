@@ -28,6 +28,7 @@ import '../../../../../config/colors.dart';
 import '../../../../../common/components.dart';
 import '../../../../pages/main_page/home_page/assignments_page/assignments_page.dart';
 import '../../../../pages/main_page/home_page/quizzes_page/quiz_page.dart';
+import '../../../../pages/main_page/home_page/enrollment_page/enrollment_page.dart';
 import '../../../../pages/main_page/home_page/quizzes_page/quizzes_page.dart';
 import '../../blog_widget/blog_widget.dart';
 
@@ -928,105 +929,12 @@ class SingleCourseWidget{
           
                 space(20),
 
-                if(courseData.tickets.isNotEmpty)...{
-                  
-                  // pricing plan
-                  ...List.generate(courseData.tickets.length, (index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: GestureDetector(
-                        onTap: (){
-                          if(courseData.tickets[index].isValid ?? false){
-                            selectedType = 'ticket';
-                            selectedTicket = courseData.tickets[index];
-                            state((){});
-                          }
-                        },
-                        behavior: HitTestBehavior.opaque,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          width: getSize().width,
-                          padding: padding(horizontal: 9, vertical: 9),
-                          
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: borderRadius(),
-                            border: Border.all(
-                              color: (selectedTicket?.id ?? -1) == courseData.tickets[index].id ? mainColor() : greyE7,
-                              width: 1
-                            )
-                          ),
-                              
-                          child: Row(
-                            children: [
-                              
-                              Container(
-                                width: 45,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                  color: (courseData.tickets[index].isValid ?? false) ? mainColor() : greyCF,
-                                  shape: BoxShape.circle,
-                                ),
-                                alignment: Alignment.center,
-                              
-                                child: SvgPicture.asset(AppAssets.discountSvg),
-                              ),
-
-                              space(0, width: 9),
-
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    
-                                    // title
-                                    Text(
-                                      "${courseData.tickets[index].title} (${courseData.tickets[index].discount}% ${appText.off})",
-                                      style: style14Bold(),
-                                    ),
-                                    
-                                    // sub title and price
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                    
-                                        Expanded(
-                                          child: Text(
-                                            courseData.tickets[index].subTitle ?? '',
-                                            style: style12Regular().copyWith(color: greyB2),
-                                          ),
-                                        ),
-                                        
-                                    
-                                        Text(
-                                          CurrencyUtils.calculator(courseData.tickets[index].priceWithTicketDiscount ?? 0),
-                                          style: style12Regular().copyWith(color: mainColor()),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-
-                  space(12),
-
-                },
-
+                // Show points option if available
                 if(courseData.points != null && courseData.points != 0)...{
-                  space(4),
-
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: GestureDetector(
                       onTap: (){
-                        selectedTicket = null;
                         selectedType = 'point';
                         state((){});
                       },
@@ -1102,66 +1010,17 @@ class SingleCourseWidget{
                         ),
                       ),
                     ),
-                  )
+                  ),
+
+                  space(12),
                 },
 
+                // Always show enrollment button - outside any condition
                 Center(
                   child: button(
                     onTap: () async {
-                
-
-                
-                      if((selectedType ?? '') == 'point'){
-                        state((){
-                          isLoading = true;
-                        });
-              
-                        bool res = await RewardsService.buyWithPoint(courseData.id!);
-                        
-                        state((){
-                          isLoading = false;
-                        });
-              
-                        if(res){
-                          backRoute(arguments: true);
-                        }
-                        
-                      }else if((selectedType ?? '') == 'ticket' && selectedTicket != null){
-                        
-                        state((){
-                          isLoading = true;
-                        });
-              
-                        bool res = await CartService.store(courseData.id!,selectedTicket!.id!);
-                        
-                        state((){
-                          isLoading = false;
-                        });
-              
-                        if(res){
-                          backRoute(arguments: true);
-                        }
-                        
-                      }else{
-                        state((){
-                          isLoading = true;
-                        });
-              
-                        bool res = await CartService.add(
-                          courseData.id!.toString(), 
-                          courseData.type == 'bundle' ? 'bundle' : 'webinar', 
-                          ''
-                        );
-                        
-                        state((){
-                          isLoading = false;
-                        });
-              
-                        if(res){
-                          backRoute(arguments: true);
-                        }
-                      }
-                
+                      // Show enrollment options dialog
+                      await _showEnrollmentOptionsDialog(context, state, courseData, selectedType, isLoading);
                     }, 
                     width: getSize().width, 
                     height: 52, 
@@ -1856,6 +1715,130 @@ class SingleCourseWidget{
         ),
       )
     );
+  }
+
+  // Function to show enrollment options dialog
+  static Future<void> _showEnrollmentOptionsDialog(
+    BuildContext context,
+    StateSetter state,
+    SingleCourseModel courseData,
+    String? selectedType,
+    bool isLoading,
+  ) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'اختر طريقة التسجيل',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'كيف تريد التسجيل في هذه الدورة؟',
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 20),
+              
+              // Buy with Code Option
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close dialog
+                    Navigator.pushNamed(context, EnrollmentPage.pageName);
+                  },
+                  icon: const Icon(Icons.qr_code_scanner, color: Colors.white),
+                  label: const Text(
+                    'شراء بالكود',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ),
+              
+              const SizedBox(height: 12),
+              
+              // Regular Purchase Option
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    Navigator.of(context).pop(); // Close dialog
+                    
+                    // Execute the original purchase logic
+                    await _handleRegularPurchase(context, state, courseData, selectedType, isLoading);
+                  },
+                  icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                  label: Text(
+                    (selectedType ?? '') == 'point' ? 'شراء بالنقاط' : 'إضافة للسلة',
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: mainColor(),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('إلغاء'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Function to handle regular purchase (with points support)
+  static Future<void> _handleRegularPurchase(
+    BuildContext context,
+    StateSetter state,
+    SingleCourseModel courseData,
+    String? selectedType,
+    bool isLoading,
+  ) async {
+    state((){
+      isLoading = true;
+    });
+
+    bool res;
+    if((selectedType ?? '') == 'point'){
+      // Buy with points
+      res = await RewardsService.buyWithPoint(courseData.id!);
+    } else {
+      // Add to cart
+      res = await CartService.add(
+        courseData.id!.toString(), 
+        courseData.type == 'bundle' ? 'bundle' : 'webinar', 
+        ''
+      );
+    }
+    
+    state((){
+      isLoading = false;
+    });
+
+    if(res){
+      backRoute(arguments: true);
+    }
   }
 
 }

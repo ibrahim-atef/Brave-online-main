@@ -421,69 +421,69 @@ SizedBox(
 ),
 
 
-                          // Featured Classes
-                          Column(
-                            children: [
-                              HomeWidget.titleAndMore(appText.featuredClasses,
-                                  isViewAll: false),
-                              if (featuredListData.isNotEmpty ||
-                                  isLoadingFeaturedListData) ...{
-                                SizedBox(
-                                  width: getSize().width,
-                                  height: 215,
-                                  child: PageView(
-                                    controller: sliderPageController,
-                                    onPageChanged: (value) async {
-                                      await Future.delayed(
-                                          const Duration(milliseconds: 500));
-
-                                      setState(() {
-                                        currentSliderIndex = value;
-                                      });
-                                    },
-                                    physics: const BouncingScrollPhysics(),
-                                    children: List.generate(
-                                        isLoadingFeaturedListData
-                                            ? 1
-                                            : featuredListData.length, (index) {
-                                      return isLoadingFeaturedListData
-                                          ? courseSliderItemShimmer()
-                                          : courseSliderItem(
-                                              featuredListData[index]);
-                                    }),
-                                  ),
-                                ),
-
-                                space(10),
-
-                                // indecator
-                                SizedBox(
-                                  width: getSize().width,
-                                  height: 15,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ...List.generate(featuredListData.length,
-                                          (index) {
-                                        return AnimatedContainer(
-                                          duration:
-                                              const Duration(milliseconds: 200),
-                                          width: currentSliderIndex == index
-                                              ? 16
-                                              : 7,
-                                          height: 7,
-                                          margin: padding(horizontal: 2),
-                                          decoration: BoxDecoration(
-                                              color: mainColor(),
-                                              borderRadius: borderRadius()),
-                                        );
-                                      }),
-                                    ],
-                                  ),
-                                )
-                              },
-                            ],
-                          ),
+                          // // Featured Classes
+                          // Column(
+                          //   children: [
+                          //     HomeWidget.titleAndMore(appText.featuredClasses,
+                          //         isViewAll: false),
+                          //     if (featuredListData.isNotEmpty ||
+                          //         isLoadingFeaturedListData) ...{
+                          //       SizedBox(
+                          //         width: getSize().width,
+                          //         height: 215,
+                          //         child: PageView(
+                          //           controller: sliderPageController,
+                          //           onPageChanged: (value) async {
+                          //             await Future.delayed(
+                          //                 const Duration(milliseconds: 500));
+                          //
+                          //             setState(() {
+                          //               currentSliderIndex = value;
+                          //             });
+                          //           },
+                          //           physics: const BouncingScrollPhysics(),
+                          //           children: List.generate(
+                          //               isLoadingFeaturedListData
+                          //                   ? 1
+                          //                   : featuredListData.length, (index) {
+                          //             return isLoadingFeaturedListData
+                          //                 ? courseSliderItemShimmer()
+                          //                 : courseSliderItem(
+                          //                     featuredListData[index]);
+                          //           }),
+                          //         ),
+                          //       ),
+                          //
+                          //       space(10),
+                          //
+                          //       // indecator
+                          //       SizedBox(
+                          //         width: getSize().width,
+                          //         height: 15,
+                          //         child: Row(
+                          //           mainAxisAlignment: MainAxisAlignment.center,
+                          //           children: [
+                          //             ...List.generate(featuredListData.length,
+                          //                 (index) {
+                          //               return AnimatedContainer(
+                          //                 duration:
+                          //                     const Duration(milliseconds: 200),
+                          //                 width: currentSliderIndex == index
+                          //                     ? 16
+                          //                     : 7,
+                          //                 height: 7,
+                          //                 margin: padding(horizontal: 2),
+                          //                 decoration: BoxDecoration(
+                          //                     color: mainColor(),
+                          //                     borderRadius: borderRadius()),
+                          //               );
+                          //             }),
+                          //           ],
+                          //         ),
+                          //       )
+                          //     },
+                          //   ],
+                          // ),
 
                           // Newest Classes
                           Column(
@@ -548,37 +548,37 @@ SizedBox(
                           // ),
 
                           // Best Rated
-                          Column(
-                            children: [
-                              HomeWidget.titleAndMore(appText.bestRated,
-                                  onTapViewAll: () {
-                                locator<FilterCourseProvider>().clearFilter();
-                                locator<FilterCourseProvider>().sort =
-                                    'best_rates';
-                                nextRoute(FilterCategoryPage.pageName);
-                              }),
-                              SizedBox(
-                                width: getSize().width,
-                                child: SingleChildScrollView(
-                                  physics: const BouncingScrollPhysics(),
-                                  padding: padding(),
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    children: List.generate(
-                                        isLoadingBestRatedListData
-                                            ? 3
-                                            : bestRatedListData.length,
-                                        (index) {
-                                      return isLoadingBestRatedListData
-                                          ? courseItemShimmer()
-                                          : courseItem(
-                                              bestRatedListData[index]);
-                                    }),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                          // Column(
+                          //   children: [
+                          //     HomeWidget.titleAndMore(appText.bestRated,
+                          //         onTapViewAll: () {
+                          //       locator<FilterCourseProvider>().clearFilter();
+                          //       locator<FilterCourseProvider>().sort =
+                          //           'best_rates';
+                          //       nextRoute(FilterCategoryPage.pageName);
+                          //     }),
+                          //     SizedBox(
+                          //       width: getSize().width,
+                          //       child: SingleChildScrollView(
+                          //         physics: const BouncingScrollPhysics(),
+                          //         padding: padding(),
+                          //         scrollDirection: Axis.horizontal,
+                          //         child: Row(
+                          //           children: List.generate(
+                          //               isLoadingBestRatedListData
+                          //                   ? 3
+                          //                   : bestRatedListData.length,
+                          //               (index) {
+                          //             return isLoadingBestRatedListData
+                          //                 ? courseItemShimmer()
+                          //                 : courseItem(
+                          //                     bestRatedListData[index]);
+                          //           }),
+                          //         ),
+                          //       ),
+                          //     )
+                          //   ],
+                          // ),
 
 
 

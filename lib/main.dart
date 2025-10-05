@@ -47,6 +47,7 @@ import 'app/pages/main_page/home_page/dashboard_page/dashboard_page.dart';
 import 'app/pages/main_page/home_page/download_page/downloads_page.dart';
 import 'app/pages/main_page/home_page/enrollment_page/enrollment_page.dart';
 import 'app/pages/main_page/home_page/favorites_page/favorites_page.dart';
+import 'app/pages/main_page/home_page/instructor_chat_page/instructor_chat_page.dart';
 import 'app/pages/main_page/home_page/assignments_page/assignment_history_page.dart';
 import 'app/pages/main_page/home_page/assignments_page/assignment_overview_page.dart';
 import 'app/pages/main_page/home_page/assignments_page/assignments_page.dart';
@@ -263,6 +264,7 @@ Future<String?> getDeviceId() async {
         routes: {
           MainPage.pageName : (context) =>  const MainPage(),
           EnrollmentPage.pageName : (context) =>  const EnrollmentPage(),
+          InstructorChatPage.pageName : (context) => const InstructorChatPage(),
           ProvidersPage.pageName : (context) => const ProvidersPage(),
           SplashPage.pageName : (context) => const SplashPage(),
           IntroPage.pageName : (context) => const IntroPage(),

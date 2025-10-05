@@ -1,51 +1,45 @@
 {
   "project_info": {
-    "project_number": "346142227155",
-    "project_id": "webinar-c51b7",
-    "storage_bucket": "webinar-c51b7.appspot.com"
+    "project_number": "343165366695",
+    "project_id": "anmka-pathologybro-main",
+    "storage_bucket": "anmka-pathologybro-main.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:346142227155:android:ea2e14d4ed957a79d23226",
+        "mobilesdk_app_id": "1:343165366695:android:a8ee74d13a9a942709c682",
         "android_client_info": {
           "package_name": "com.anmka.braveonline"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "346142227155-hp5epl1gdhk7p7422nevg91k7pofs342.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.anmka.braveonline",
-            "certificate_hash": "ad828d5d01b33d10617e52e2b2cbc2d2516c1bb4"
-          }
-        },
-        {
-          "client_id": "346142227155-rmrbm5ro6r8d038s3u9cph7umvjrrvks.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyATOMUHqK1GBarcT394Drm6RFi50LsX3wQ"
+          "current_key": "AIzaSyA_J3GGNwBt0FHLO2MkvqR-1S0qz7bHgFI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "346142227155-be19v4v7jj1dh2eqb2avp2tmnghahoc8.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "346142227155-30a9drvvvduc0qboegip572sh6e30aeg.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.anmka.braveonline"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343165366695:android:6e05c9ea5112b30d09c682",
+        "android_client_info": {
+          "package_name": "com.anmka.pathologybro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_J3GGNwBt0FHLO2MkvqR-1S0qz7bHgFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }

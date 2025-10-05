@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:webinar/app/models/content_model.dart';
+import 'package:webinar/app/pages/main_page/home_page/instructor_chat_page/instructor_chat_page.dart';
 import 'package:webinar/app/models/forum_model.dart';
 import 'package:webinar/app/models/single_course_model.dart';
 import 'package:webinar/app/services/guest_service/course_service.dart';
@@ -170,6 +171,29 @@ class _LearningPageState extends State<LearningPage> with TickerProviderStateMix
 
         appBar: appbar(
           title: courseData?.title ?? '',
+        ),
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            if (courseData?.teacher?.id != null) {
+              nextRoute(
+                InstructorChatPage.pageName,
+                arguments: {
+                  'instructorId': courseData!.teacher!.id,
+                  'instructorName': courseData!.teacher!.fullName ?? 'المدرب',
+                },
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('معلومات المدرب غير متوفرة')),
+              );
+            }
+          },
+          backgroundColor: mainColor(),
+          child: const Icon(
+            Icons.chat,
+            color: Colors.white,
+          ),
         ),
         
         body: courseData == null

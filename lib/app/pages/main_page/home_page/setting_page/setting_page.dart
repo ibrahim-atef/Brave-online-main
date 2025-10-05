@@ -265,8 +265,8 @@ class _SettingPageState extends State<SettingPage> with TickerProviderStateMixin
                     title: tabBar((p0) {}, tabController, [
                       Tab(text: appText.general, height: 32),
                       Tab(text: appText.security, height: 32),
-                      Tab(text: appText.financial, height: 32),
-                      Tab(text: appText.localization, height: 32),
+                      // Tab(text: appText.financial, height: 32),
+                      // Tab(text: appText.localization, height: 32),
                     ]),
                   ),
 
@@ -299,75 +299,75 @@ class _SettingPageState extends State<SettingPage> with TickerProviderStateMixin
                         ),
 
 
-                        SettingWidget.financialPage(
-                          accountTypeController, accountTypeNode, ibanController, ibanNode,
-                          accountIdController, accountIdNode, addressController, addressNode, 
-                          (){
-                            setState(() {});
-                          },
-                          indentityScanImage,
-                          certificateImage,
-                          locator<UserProvider>().profile?.identityScan != null,
-                          locator<UserProvider>().profile?.certificate != null,
-                          (ImageSource source) async { //selectIndentityImage 
-                            
-                            final ImagePicker picker = ImagePicker();
-                            final XFile? image = await picker.pickImage(source: source);
+                        // SettingWidget.financialPage(
+                        //   accountTypeController, accountTypeNode, ibanController, ibanNode,
+                        //   accountIdController, accountIdNode, addressController, addressNode, 
+                        //   (){
+                        //     setState(() {});
+                        //   },
+                        //   indentityScanImage,
+                        //   certificateImage,
+                        //   locator<UserProvider>().profile?.identityScan != null,
+                        //   locator<UserProvider>().profile?.certificate != null,
+                        //   (ImageSource source) async { //selectIndentityImage 
+                        //     
+                        //     final ImagePicker picker = ImagePicker();
+                        //     final XFile? image = await picker.pickImage(source: source);
 
-                            if(image != null){
-                              indentityScanImage = await compressImage(image);
+                        //     if(image != null){
+                        //       indentityScanImage = await compressImage(image);
 
-                              setState(() {});
-                            }
+                        //       setState(() {});
+                        //     }
 
-                          },
-                          () async {
-                            final ImagePicker picker = ImagePicker();
-                            final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+                        //   },
+                        //   () async {
+                        //     final ImagePicker picker = ImagePicker();
+                        //     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
-                            if(image != null){
-                              certificateImage = await compressImage(image);
+                        //     if(image != null){
+                        //       certificateImage = await compressImage(image);
 
-                              setState(() {});
-                            }
-                          }
-                        ),
+                        //       setState(() {});
+                        //     }
+                        //   }
+                        // ),
                         
 
-                        SettingWidget.localizationPage(
-                          countries,
-                          selectedCountry,
-                          (data){
-                            selectedCountry = data;
-                            setState(() {});
-                          },
+                        // SettingWidget.localizationPage(
+                        //   countries,
+                        //   selectedCountry,
+                        //   (data){
+                        //     selectedCountry = data;
+                        //     setState(() {});
+                        //   },
 
-                          timeZoneData,
-                          timeZoneSelected,
-                          (data){
-                            timeZoneSelected = data;
-                            setState(() {});
-                          },
+                        //   timeZoneData,
+                        //   timeZoneSelected,
+                        //   (data){
+                        //     timeZoneSelected = data;
+                        //     setState(() {});
+                        //   },
                           
-                          provinceSelectedId,
-                          (id){
-                            provinceSelectedId = id;
-                            setState(() {});
-                          },
+                        //   provinceSelectedId,
+                        //   (id){
+                        //     provinceSelectedId = id;
+                        //     setState(() {});
+                        //   },
                           
-                          citySelectedId,
-                          (id){
-                            citySelectedId = id;
-                            setState(() {});
-                          },
+                        //   citySelectedId,
+                        //   (id){
+                        //     citySelectedId = id;
+                        //     setState(() {});
+                        //   },
                           
-                          districtSelectedId,
-                          (id){
-                            districtSelectedId = id;
-                            setState(() {});
-                          },
+                        //   districtSelectedId,
+                        //   (id){
+                        //     districtSelectedId = id;
+                        //     setState(() {});
+                        //   },
 
-                        )
+                        // )
 
                       ]
                     ),

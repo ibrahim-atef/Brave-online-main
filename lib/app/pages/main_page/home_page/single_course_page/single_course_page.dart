@@ -4,6 +4,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webinar/app/models/course_model.dart';
 import 'package:webinar/app/models/single_course_model.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
@@ -252,27 +254,47 @@ class _SingleCoursePageState extends State<SingleCoursePage> with SingleTickerPr
       child: Scaffold(
 floatingActionButton: Padding(
   padding: const EdgeInsets.only(bottom: 100),
-  child: SizedBox(
-    height: 56,
-    width: 56,
-    child: FloatingActionButton(
-      onPressed: () {
-        nextRoute(
-          ConversationsPage.pageName,
-          arguments: {'courseId': courseData?.id, 'title': courseData?.title},
-        );
-      },
-      backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16), // Rounded Rectangle
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      // WhatsApp Button
+      GestureDetector(
+        onTap: () async {
+          await launchUrl(Uri.parse("https://wa.me/+201067694305"));
+        },
+        child: const FaIcon(
+          FontAwesomeIcons.whatsapp,
+          color: Colors.green,
+          size: 30.0,
+        ),
       ),
-      elevation: 6, // Soft shadow
-      child: Icon(
-        Icons.mark_chat_unread_rounded,
-        size: 30,
-        color: mainColor(),
+      
+      const SizedBox(height: 12), // Space between buttons
+      
+      // Chat Button
+      SizedBox(
+        height: 56,
+        width: 56,
+        child: FloatingActionButton(
+          onPressed: () {
+            nextRoute(
+              ConversationsPage.pageName,
+              arguments: {'courseId': courseData?.id, 'title': courseData?.title},
+            );
+          },
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 6,
+          child: Icon(
+            Icons.mark_chat_unread_rounded,
+            size: 30,
+            color: mainColor(),
+          ),
+        ),
       ),
-    ),
+    ],
   ),
 ),
 
