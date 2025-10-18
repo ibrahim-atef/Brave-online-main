@@ -1,129 +1,192 @@
 import 'dart:async';
-
-import 'package:flutter/services.dart';
+import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:modern_player/modern_player.dart';
+import 'package:flutter/services.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FullScreenVideoPage extends StatefulWidget {
   final String url;
   final String name;
+  final YoutubePlayerController controller;
+  final Duration initialPosition;
+  final bool shouldAutoPlay;
 
-  const FullScreenVideoPage({super.key, required this.url, required this.name});
+  const FullScreenVideoPage({
+    Key? key,
+    required this.url,
+    required this.name,
+    required this.controller,
+    required this.initialPosition,
+    required this.shouldAutoPlay,
+  }) : super(key: key);
 
   @override
-  _FullScreenVideoPageState createState() => _FullScreenVideoPageState();
+  State<FullScreenVideoPage> createState() => _FullScreenVideoPageState();
 }
 
 class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
-  double _watermarkPositionX = 0.0; // متغير لتحديد مكان العلامة المائية أفقياً
-  double _watermarkPositionY = 0.0; // متغير لتحديد مكان العلامة المائية رأسياً
-  late Timer _timer;
+  bool _disposed = false;
+  Timer? _positionSaveTimer;
 
   @override
   void initState() {
     super.initState();
-    // إعداد الـ Timer لتحريك العلامة المائية كل 3 ثواني
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
-      setState(() {
-        // التبديل بين مكانين مختلفين للعلامة المائية: من الزاوية العلوية اليسرى إلى المنتصف
-        if (_watermarkPositionX == 0.0 && _watermarkPositionY == 0.0) {
-          _watermarkPositionX = 0.5; // التحرك نحو المنتصف أفقياً
-          _watermarkPositionY = 0.5; // التحرك نحو المنتصف رأسياً
-        } else {
-          _watermarkPositionX = 0.0; // العودة إلى الزاوية العلوية اليسرى أفقياً
-          _watermarkPositionY = 0.0; // العودة إلى الزاوية العلوية اليسرى رأسياً
-        }
-      });
+
+    // Force landscape orientation + immersive mode for fullscreen
+    _setLandscapeOrientation();
+
+    // Set up position saving timer (save every 5 seconds)
+    _positionSaveTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (_mountedSafe && widget.controller.value.isReady) {
+        _saveCurrentPosition();
+      }
     });
+
+    // Use a post-frame callback to ensure the widget's build is complete
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_mountedSafe) return;
+      if (widget.controller.value.isReady) {
+        widget.controller.seekTo(widget.initialPosition);
+
+        // Auto-play if it was playing before
+        if (widget.shouldAutoPlay) {
+          Future.delayed(const Duration(milliseconds: 500), () {
+            if (_mountedSafe) {
+              widget.controller.play();
+            }
+          });
+        }
+      }
+    });
+  }
+
+  bool get _mountedSafe => mounted && !_disposed;
+
+  /// Save current video position to SharedPreferences
+  Future<void> _saveCurrentPosition() async {
+    if (!widget.controller.value.isReady) return;
+    
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? videoId = YoutubePlayer.convertUrlToId(widget.url);
+      if (videoId != null) {
+        final int currentSeconds = widget.controller.value.position.inSeconds;
+        await prefs.setInt('video_position_$videoId', currentSeconds);
+        log('Fullscreen: Saved position: ${widget.controller.value.position} for video: $videoId');
+      }
+    } catch (e) {
+      log('Fullscreen: Error saving position: $e');
+    }
+  }
+
+  /// Ensures the device is set to landscape orientation and immersive mode.
+  void _setLandscapeOrientation() {
+    try {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    } catch (e) {
+      log('Error setting landscape orientation: $e');
+    }
+  }
+
+  /// Resets UI mode and orientation when leaving.
+  void _resetOrientation() {
+    try {
+      // Save position before leaving
+      _saveCurrentPosition();
+      
+      // Restore standard UI mode and portrait orientation
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    } catch (e) {
+      log('Error resetting orientation: $e');
+    }
   }
 
   @override
   void dispose() {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    // إلغاء الـ Timer عند تدمير الـ widget لتجنب التسريبات
-    _timer.cancel();
+    _disposed = true;
+    _positionSaveTimer?.cancel();
+    _positionSaveTimer = null;
+    
+    // Save final position before disposing
+    _saveCurrentPosition();
+    
+    // Do NOT dispose the controller here; it is passed from PodVideoPlayerDev
+    // Also do not force portrait orientation here; let the page popping handle it
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // التأكد من تعديل اتجاه الشاشة إلى الوضع الأفقي (Landscape)
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);  // إخفاء شريط الحالة والأزرار
+    return WillPopScope(
+      onWillPop: () async {
+        _resetOrientation();
+        return true; // proceed with the pop
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              // Video Player
+              Center(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: YoutubePlayer(
+                    controller: widget.controller,
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.red,
+                    progressColors: const ProgressBarColors(
+                      playedColor: Colors.red,
+                      handleColor: Colors.redAccent,
+                    ),
+                    onReady: () {
+                      if (_mountedSafe) {
+                        // Ensure correct position
+                        widget.controller.seekTo(widget.initialPosition);
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Center(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,  // ملء الشاشة ارتفاعًا
-                width: MediaQuery.of(context).size.width,  // ملء الشاشة عرضًا
-                child: ModernPlayer.createPlayer(
-                  controlsOptions: ModernPlayerControlsOptions(
-                    showControls: true,
-                    doubleTapToSeek: true,
-                    showMenu: true,
-                    showMute: false,
-                    showBackbutton: false,
-                    enableVolumeSlider: true,
-                    enableBrightnessSlider: true,
-                    showBottomBar: true,
-                  ),
-                  defaultSelectionOptions: ModernPlayerDefaultSelectionOptions(
-                      defaultQualitySelectors: [DefaultSelectorLabel('360p')]
-                  ),
-                  video: ModernPlayerVideo.youtubeWithUrl(
-                    url: widget.url,  // رابط الفيديو
-                    fetchQualities: true,
+                        if (widget.shouldAutoPlay) {
+                          Future.delayed(const Duration(milliseconds: 500), () {
+                            if (_mountedSafe) {
+                              widget.controller.play();
+                            }
+                          });
+                        }
+                      }
+                    },
+                    onEnded: (YoutubeMetaData metaData) {
+                      // Save position when video ends
+                      _saveCurrentPosition();
+                    },
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 20,
-              left: 20,
-              child: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () {
-                  // إعادة الوضع الرأسي عند العودة
-                  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-                  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);  // عرض شريط الحالة والأزرار
-                  print("Icon fullscreen");
-
-                    print("Navigator.pop(context);");
-                    // العودة للصفحة السابقة
-                    Navigator.pop(context);
-
-                  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-                },
-              ),
-            ),
-            // إضافة العلامة المائية في وسط الشاشة عند التبديل إلى وضع ملء الشاشة
-            AnimatedPositioned(
-              duration: Duration(seconds: 1),  // مدة الحركة
-              // الحساب لتحديد مكان العلامة المائية أفقيًا ورأسيًا في وسط الفيديو
-              right: _watermarkPositionX == 0.0
-                  ? 20 // الزاوية العلوية اليسرى
-                  : (MediaQuery.of(context).size.width / 2) - 100, // المنتصف أفقياً (للسهولة، قمنا بطرح 100 لأن عرض النص سيكون 200 تقريبًا)
-              top: _watermarkPositionY == (MediaQuery.of(context).size.height / 2)
-                  ? 20 // الزاوية العلوية اليسرى
-                  : (MediaQuery.of(context).size.height / 2) - 50, // المنتصف رأسياً (حيث أن ارتفاع الشاشة هو 250، نقوم بتحديد المنتصف عن طريق الحساب)
-              child: Container(
-                padding: EdgeInsets.all(8),
-                color: Colors.transparent,
-                child: Text(
-                  widget.name,
-                  style: TextStyle(
-                    fontSize: 10, // حجم الخط
-                    color: Colors.black.withOpacity(0.5), // شفافية النص
-                    fontWeight: FontWeight.bold,
+              // Back button
+              Positioned(
+                top: 20,
+                left: 20,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    onPressed: () {
+                      _resetOrientation();
+                      Navigator.pop(context);
+                    },
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

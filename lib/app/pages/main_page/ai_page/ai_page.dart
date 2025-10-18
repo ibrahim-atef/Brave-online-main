@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:screen_protector/screen_protector.dart';
 import 'package:webinar/app/pages/main_page/home_page/home_page.dart';
 import 'package:webinar/app/pages/main_page/main_page.dart';
 import 'package:webinar/common/common.dart';
@@ -22,7 +22,7 @@ class _AiPageState extends State<AiPage> {
   final String homeUrl = 'https://chatgpt.com'; // رابط الصفحة الرئيسية
 
   Future<void> secureScreen() async {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    await ScreenProtector.protectDataLeakageOn();
   }
 
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers = {

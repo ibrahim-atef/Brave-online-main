@@ -64,7 +64,7 @@ dependencies:
   flutter_slidable: ^3.1.2
   webview_flutter: ^4.4.2
 
-  modern_player: ^0.1.0
+  youtube_player_flutter:
 
   flutter_tts: ^4.0.2
   table_calendar: ^3.0.9
@@ -83,7 +83,7 @@ dependencies:
   hive_flutter: ^1.1.0
   connectivity_plus: ^6.0.3
   cached_network_image: ^3.3.1
-  flutter_windowmanager: ^0.2.0
+  screen_protector: ^1.4.3
   flutter_launcher_icons: "^0.14.1"
 
   font_awesome_flutter: ^10.8.0
@@ -96,10 +96,9 @@ dependencies:
   # qr_code_scanner: ^1.0.1
   mobile_scanner: ^3.5.4
   qr_flutter: ^4.1.0
-  google_mlkit_barcode_scanning: ^0.5.0
-
+  google_mlkit_barcode_scanning:   # Temporarily disabled - requires SDK 36
   
-  pusher_channels_flutter: ^2.2.1
+  pusher_channels_flutter:
 
   flutter_sound: ^9.28.0
   # record: ^6.0.0

@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:screen_protector/screen_protector.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/introduction_page/intro_page.dart';
@@ -121,8 +121,8 @@ void main() async {
 
 
 
-  // implemented using window manager
-  await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  // implemented using screen protector
+  await ScreenProtector.protectDataLeakageOn();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -185,7 +185,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   Future<void> secureScreen() async {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    await ScreenProtector.protectDataLeakageOn();
   }
   
   
