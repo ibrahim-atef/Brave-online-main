@@ -95,8 +95,6 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 
-
-
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // showFlutterNotification(message);
@@ -105,21 +103,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // print('message--');
 }
 
-
 void main() async {
-
   // debugRepaintRainbowEnabled = true;
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // transparent status bar
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // transparent status bar
+    ),
+  );
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-
-
-
-
 
   // implemented using screen protector
   await ScreenProtector.protectDataLeakageOn();
@@ -161,7 +154,6 @@ void main() async {
   //   runApp(const MyApp());
   // });
 
-
   // تمكين جميع التوجهات
   // SystemChrome.setPreferredOrientations([
   //   DeviceOrientation.portraitUp,
@@ -183,12 +175,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   Future<void> secureScreen() async {
     await ScreenProtector.protectDataLeakageOn();
   }
-  
-  
+
   var deviceId = '';
 
   @override
@@ -199,25 +189,24 @@ class _MyAppState extends State<MyApp> {
       if (kDebugMode) {
         print('device id: $value');
       }
-      deviceId = value!;
+      deviceId = value;
     });
   }
 
-Future<String?> getDeviceId() async {
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  Future<String?> getDeviceId() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
-  if (Platform.isAndroid) {
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    return androidInfo.id; // أو ممكن تستخدم androidInfo.androidId
-  } else if (Platform.isIOS) {
-    IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-    return iosInfo.identifierForVendor;
+    if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      return androidInfo.id; // أو ممكن تستخدم androidInfo.androidId
+    } else if (Platform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      return iosInfo.identifierForVendor;
+    }
+
+    return null;
   }
 
-  return null;
-}
-  
-  
   @override
   void initState() {
     // TODO: implement initState
@@ -229,107 +218,118 @@ Future<String?> getDeviceId() async {
   Widget build(BuildContext context) {
     AutoOrientation.portraitAutoMode(forceSensor: true);
 
-
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => locator<AppLanguageProvider>()),
+        ChangeNotifierProvider(
+          create: (context) => locator<AppLanguageProvider>(),
+        ),
         ChangeNotifierProvider(create: (context) => locator<PageProvider>()),
-        ChangeNotifierProvider(create: (context) => locator<FilterCourseProvider>()),
-        ChangeNotifierProvider(create: (context) => locator<ProvidersProvider>()),
+        ChangeNotifierProvider(
+          create: (context) => locator<FilterCourseProvider>(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => locator<ProvidersProvider>(),
+        ),
         ChangeNotifierProvider(create: (context) => locator<UserProvider>()),
         ChangeNotifierProvider(create: (context) => locator<DrawerProvider>()),
       ],
       child: MaterialApp(
         title: appText.webinar,
         navigatorKey: navigatorKey,
-        navigatorObservers: <NavigatorObserver>[Constants.singleCourseRouteObserver, Constants.contentRouteObserver],
+        navigatorObservers: <NavigatorObserver>[
+          Constants.singleCourseRouteObserver,
+          Constants.contentRouteObserver,
+        ],
         scrollBehavior: ScrollConfiguration.of(context).copyWith(
-          dragDevices: {
-            PointerDeviceKind.touch,
-            PointerDeviceKind.mouse,
-          },
+          dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
         ),
         theme: ThemeData(
           useMaterial3: false,
 
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
           scaffoldBackgroundColor: greyFA,
-
         ),
 
         debugShowCheckedModeBanner: false,
-        // debugShowMaterialGrid: true,
 
+        // debugShowMaterialGrid: true,
         initialRoute: SplashPage.pageName,
         routes: {
-          MainPage.pageName : (context) =>  const MainPage(),
-          EnrollmentPage.pageName : (context) =>  const EnrollmentPage(),
-          InstructorChatPage.pageName : (context) => const InstructorChatPage(),
-          ProvidersPage.pageName : (context) => const ProvidersPage(),
-          SplashPage.pageName : (context) => const SplashPage(),
-          IntroPage.pageName : (context) => const IntroPage(),
-          LoginPage.pageName : (context) => const LoginPage(),
-          RegisterPage.pageName : (context) => const RegisterPage(),
-          VerifyCodePage.pageName : (context) => const VerifyCodePage(),
-          ForgetPasswordPage.pageName : (context) => const ForgetPasswordPage(),
-          FilterCategoryPage.pageName : (context) => const FilterCategoryPage(),
-          SuggestedSearchPage.pageName : (context) => const SuggestedSearchPage(),
-          ResultSearchPage.pageName : (context) => const ResultSearchPage(),
-          DetailsBlogPage.pageName : (context) => const DetailsBlogPage(),
-          SingleCoursePage.pageName : (context) => const SingleCoursePage(),
-          LearningPage.pageName : (context) => const LearningPage(),
-          SearchForumPage.pageName : (context) => const SearchForumPage(),
-          ForumAnswerPage.pageName : (context) => const ForumAnswerPage(),
-          NotificationPage.pageName : (context) => const NotificationPage(),
-          CartPage.pageName : (context) => const CartPage(),
-          CheckoutPage.pageName : (context) => const CheckoutPage(),
-          SingleContentPage.pageName : (context) => const SingleContentPage(),
-          WebViewPage.pageName : (context) => const WebViewPage(),
-          BankAccountsPage.pageName : (context) => const BankAccountsPage(),
-          UserProfilePage.pageName : (context) => const UserProfilePage(),
-          AssignmentsPage.pageName : (context) => const AssignmentsPage(),
-          AssignmentOverviewPage.pageName : (context) => const AssignmentOverviewPage(),
-          SubmissionsPage.pageName : (context) => const SubmissionsPage(),
-          AssignmentHistoryPage.pageName : (context) => const AssignmentHistoryPage(),
-          FinancialPage.pageName : (context) => const FinancialPage(),
-          CourseOverviewPage.pageName : (context) => const CourseOverviewPage(),
-          MeetingsPage.pageName : (context) => const MeetingsPage(),
-          MeetingDetailsPage.pageName : (context) => const MeetingDetailsPage(),
-          CommentsPage.pageName : (context) => const CommentsPage(),
-          CommentDetailsPage.pageName : (context) => const CommentDetailsPage(),
-          SettingPage.pageName : (context) => const SettingPage(),
-          QuizzesPage.pageName : (context) => const QuizzesPage(),
-          QuizInfoPage.pageName : (context) => const QuizInfoPage(),
-          QuizPage.pageName : (context) => const QuizPage(),
-          CertificatesPage.pageName : (context) => const CertificatesPage(),
-          CertificatesDetailsPage.pageName : (context) => const CertificatesDetailsPage(),
-          CertificatesStudentPage.pageName : (context) => const CertificatesStudentPage(),
-          SubscriptionPage.pageName : (context) => const SubscriptionPage(),
-          FavoritesPage.pageName : (context) => const FavoritesPage(),
-          DashboardPage.pageName : (context) => const DashboardPage(),
-          SupportMessagePage.pageName : (context) => const SupportMessagePage(),
-          ConversationPage.pageName : (context) => const ConversationPage(),
-          PdfViewerPage.pageName : (context) => const PdfViewerPage(),
-          RewardPointPage.pageName : (context) => const RewardPointPage(),
-          MaintenancePage.pageName : (context) => const MaintenancePage(),
-          PaymentStatusPage.pageName : (context) => const PaymentStatusPage(),
-          IpEmptyStatePage.pageName : (context) => const IpEmptyStatePage(),
+          MainPage.pageName: (context) => const MainPage(),
+          EnrollmentPage.pageName: (context) => const EnrollmentPage(),
+          InstructorChatPage.pageName: (context) => const InstructorChatPage(),
+          ProvidersPage.pageName: (context) => const ProvidersPage(),
+          SplashPage.pageName: (context) => const SplashPage(),
+          IntroPage.pageName: (context) => const IntroPage(),
+          LoginPage.pageName: (context) => const LoginPage(),
+          RegisterPage.pageName: (context) => const RegisterPage(),
+          VerifyCodePage.pageName: (context) => const VerifyCodePage(),
+          ForgetPasswordPage.pageName: (context) => const ForgetPasswordPage(),
+          FilterCategoryPage.pageName: (context) => const FilterCategoryPage(),
+          SuggestedSearchPage.pageName: (context) =>
+              const SuggestedSearchPage(),
+          ResultSearchPage.pageName: (context) => const ResultSearchPage(),
+          DetailsBlogPage.pageName: (context) => const DetailsBlogPage(),
+          SingleCoursePage.pageName: (context) => const SingleCoursePage(),
+          LearningPage.pageName: (context) => const LearningPage(),
+          SearchForumPage.pageName: (context) => const SearchForumPage(),
+          ForumAnswerPage.pageName: (context) => const ForumAnswerPage(),
+          NotificationPage.pageName: (context) => const NotificationPage(),
+          CartPage.pageName: (context) => const CartPage(),
+          CheckoutPage.pageName: (context) => const CheckoutPage(),
+          SingleContentPage.pageName: (context) => const SingleContentPage(),
+          WebViewPage.pageName: (context) => const WebViewPage(),
+          BankAccountsPage.pageName: (context) => const BankAccountsPage(),
+          UserProfilePage.pageName: (context) => const UserProfilePage(),
+          AssignmentsPage.pageName: (context) => const AssignmentsPage(),
+          AssignmentOverviewPage.pageName: (context) =>
+              const AssignmentOverviewPage(),
+          SubmissionsPage.pageName: (context) => const SubmissionsPage(),
+          AssignmentHistoryPage.pageName: (context) =>
+              const AssignmentHistoryPage(),
+          FinancialPage.pageName: (context) => const FinancialPage(),
+          CourseOverviewPage.pageName: (context) => const CourseOverviewPage(),
+          MeetingsPage.pageName: (context) => const MeetingsPage(),
+          MeetingDetailsPage.pageName: (context) => const MeetingDetailsPage(),
+          CommentsPage.pageName: (context) => const CommentsPage(),
+          CommentDetailsPage.pageName: (context) => const CommentDetailsPage(),
+          SettingPage.pageName: (context) => const SettingPage(),
+          QuizzesPage.pageName: (context) => const QuizzesPage(),
+          QuizInfoPage.pageName: (context) => const QuizInfoPage(),
+          QuizPage.pageName: (context) => const QuizPage(),
+          CertificatesPage.pageName: (context) => const CertificatesPage(),
+          CertificatesDetailsPage.pageName: (context) =>
+              const CertificatesDetailsPage(),
+          CertificatesStudentPage.pageName: (context) =>
+              const CertificatesStudentPage(),
+          SubscriptionPage.pageName: (context) => const SubscriptionPage(),
+          FavoritesPage.pageName: (context) => const FavoritesPage(),
+          DashboardPage.pageName: (context) => const DashboardPage(),
+          SupportMessagePage.pageName: (context) => const SupportMessagePage(),
+          ConversationPage.pageName: (context) => const ConversationPage(),
+          PdfViewerPage.pageName: (context) => const PdfViewerPage(),
+          RewardPointPage.pageName: (context) => const RewardPointPage(),
+          MaintenancePage.pageName: (context) => const MaintenancePage(),
+          PaymentStatusPage.pageName: (context) => const PaymentStatusPage(),
+          IpEmptyStatePage.pageName: (context) => const IpEmptyStatePage(),
+
           ///
-          DownloadsPage.pageName : (context) => const DownloadsPage(),
-          AiPage.pageName : (context) =>  AiPage(),
-          CustomLoginPage.pageName : (context) =>  CustomLoginPage(),
-          ChatScreen.pageName : (context) =>  ChatScreen(),
-          ConversationsPage.pageName : (context) =>  ConversationsPage(),
+          DownloadsPage.pageName: (context) => const DownloadsPage(),
+          AiPage.pageName: (context) => AiPage(),
+          CustomLoginPage.pageName: (context) => CustomLoginPage(),
+          ChatScreen.pageName: (context) => ChatScreen(),
+          ConversationsPage.pageName: (context) => ConversationsPage(),
           // offline pages...
-          InternetConnectionPage.pageName : (context) => const InternetConnectionPage(),
-          OfflineListCoursePage.pageName : (context) => const OfflineListCoursePage(),
-          OfflineSingleCoursePage.pageName : (context) => const OfflineSingleCoursePage(),
-          OfflineSingleContentPage.pageName : (context) => const OfflineSingleContentPage(),
+          InternetConnectionPage.pageName: (context) =>
+              const InternetConnectionPage(),
+          OfflineListCoursePage.pageName: (context) =>
+              const OfflineListCoursePage(),
+          OfflineSingleCoursePage.pageName: (context) =>
+              const OfflineSingleCoursePage(),
+          OfflineSingleContentPage.pageName: (context) =>
+              const OfflineSingleContentPage(),
         },
-
-
       ),
     );
   }
 }
-
