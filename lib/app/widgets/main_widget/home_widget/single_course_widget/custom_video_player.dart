@@ -47,12 +47,12 @@ class PodVideoPlayerDev extends StatefulWidget {
   final RouteObserver<ModalRoute<void>> routeObserver;
 
   const PodVideoPlayerDev(
-      this.url,
-      this.type,
-      this.routeObserver, {
-        Key? key,
-        required this.name,
-      }) : super(key: key);
+    this.url,
+    this.type,
+    this.routeObserver, {
+    super.key,
+    required this.name,
+  });
 
   /// Clear saved position for a specific video
   static Future<void> clearSavedPosition(String url) async {
@@ -73,12 +73,13 @@ class PodVideoPlayerDev extends StatefulWidget {
     try {
       final prefs = await SharedPreferences.getInstance();
       final keys = prefs.getKeys();
-      final videoPositionKeys = keys.where((key) => key.startsWith('video_position_'));
-      
+      final videoPositionKeys =
+          keys.where((key) => key.startsWith('video_position_'));
+
       for (final key in videoPositionKeys) {
         await prefs.remove(key);
       }
-      
+
       log('Cleared all saved video positions');
     } catch (e) {
       log('Error clearing all saved positions: $e');
@@ -109,8 +110,8 @@ class PodVideoPlayerDev extends StatefulWidget {
 
 class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
   bool _isFullScreen = false;
-  double _watermarkPositionX = 0.0;
-  double _watermarkPositionY = 0.0;
+  final double _watermarkPositionX = 0.0;
+  final double _watermarkPositionY = 0.0;
   Timer? _timer;
   YoutubePlayerController? _controller;
   YoutubePlayerController? _fullscreenController;
@@ -153,7 +154,7 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
   /// Save current video position to SharedPreferences
   Future<void> _saveCurrentPosition() async {
     if (_controller == null || !_controller!.value.isReady) return;
-    
+
     try {
       final prefs = await SharedPreferences.getInstance();
       final String? videoId = YoutubePlayer.convertUrlToId(widget.url);
@@ -234,7 +235,7 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
   void _onControllerStateChanged() {
     if (_mountedSafe && _controller != null) {
       setState(() {});
-      
+
       // Save position when video ends
       if (_controller!.value.playerState == PlayerState.ended) {
         _saveCurrentPosition();
@@ -278,9 +279,9 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
     // Sync position in fullscreen controller
     _fullscreenController!.seekTo(currentPosition);
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
+    Navigator.push(
+      context,
+      MaterialPageRoute(
         builder: (context) => FullScreenVideoPage(
           url: widget.url,
           name: widget.name,
@@ -288,11 +289,11 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
           initialPosition: currentPosition,
           shouldAutoPlay: wasPlaying,
         ),
-        ),
-      ).then((_) {
+      ),
+    ).then((_) {
       if (!_mountedSafe) return;
-        setState(() {
-          _isFullScreen = false;
+      setState(() {
+        _isFullScreen = false;
       });
       _setPortraitOrientation();
 
@@ -305,7 +306,7 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
 
   void _togglePlayPause() {
     if (_controller == null || !_controller!.value.isReady) return;
-    
+
     try {
       if (_controller!.value.isPlaying) {
         _controller!.pause();
@@ -358,6 +359,17 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
 
     _fullscreenController?.dispose();
     _fullscreenController = null;
+
+    // استعادة إعدادات الـ system UI عند إغلاق الفيديو
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
+
     super.dispose();
   }
 
@@ -379,25 +391,26 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
                 // Video Player or Loading
                 if (_isLoading)
                   Container(
-                  height: 250,
-                  width: MediaQuery.of(context).size.width,
+                    height: 250,
+                    width: MediaQuery.of(context).size.width,
                     color: Colors.black87,
                     child: const Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
                           ),
                           SizedBox(height: 16),
                           Text(
                             'Loading video...',
                             style: TextStyle(
-                            color: Colors.white,
+                              color: Colors.white,
                               fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
                       ),
                     ),
                   )
@@ -457,16 +470,18 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
                       },
                     ),
                   ),
-                
+
                 // Bottom Controls Bar (only show when video is ready)
-                if (_isInitialized && _controller != null && _controller!.value.isReady)
+                if (_isInitialized &&
+                    _controller != null &&
+                    _controller!.value.isReady)
                   Positioned(
                     bottom: 0,
                     left: 0,
                     right: 0,
                     child: Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       color: Colors.black.withOpacity(0.2),
                       child: Row(
                         children: [
@@ -517,13 +532,13 @@ class _PodVideoPlayerDevState extends State<PodVideoPlayerDev> {
                               constraints: const BoxConstraints(
                                 minWidth: 36,
                                 minHeight: 36,
-                    ),
-                  ),
-                ),
+                              ),
+                            ),
+                          ),
                         ],
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

@@ -10,7 +10,6 @@ import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/introduction_page/intro_page.dart';
 import 'package:webinar/app/pages/introduction_page/ip_empty_state_page.dart';
 import 'package:webinar/app/pages/introduction_page/maintenance_page.dart';
-import 'package:webinar/app/pages/introduction_page/splash_page.dart';
 import 'package:webinar/app/pages/main_page/home_page/dashboard_page/reward_point_page.dart';
 import 'package:webinar/app/pages/main_page/home_page/meetings_page/meeting_details_page.dart';
 import 'package:webinar/app/pages/main_page/home_page/payment_status_page/payment_status_page.dart';
@@ -88,7 +87,6 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:auto_orientation/auto_orientation.dart';
-import 'package:flutter/services.dart';
 
 import 'package:webinar/common/data/app_data.dart';
 import 'dart:io';
@@ -107,7 +105,7 @@ void main() async {
   // debugRepaintRainbowEnabled = true;
 
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
     ),
   );
@@ -212,6 +210,9 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
     secureScreen();
+
+    // إضافة listener لاستعادة إعدادات الـ system UI عند العودة من صفحات الفيديو
+    WidgetsBinding.instance.addObserver(_SystemUIOverlayObserver());
   }
 
   @override
@@ -245,7 +246,6 @@ class _MyAppState extends State<MyApp> {
         ),
         theme: ThemeData(
           useMaterial3: false,
-
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
           scaffoldBackgroundColor: greyFA,
         ),
@@ -316,7 +316,7 @@ class _MyAppState extends State<MyApp> {
           ///
           DownloadsPage.pageName: (context) => const DownloadsPage(),
           AiPage.pageName: (context) => AiPage(),
-          CustomLoginPage.pageName: (context) => CustomLoginPage(),
+          CustomLoginPage.pageName: (context) => const CustomLoginPage(),
           ChatScreen.pageName: (context) => ChatScreen(),
           ConversationsPage.pageName: (context) => ConversationsPage(),
           // offline pages...
@@ -331,5 +331,25 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
+  }
+}
+
+// Observer class لمراقبة تغييرات الـ system UI overlay
+class _SystemUIOverlayObserver extends WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    // عند العودة للـ app، استعادة إعدادات الـ system UI
+    if (state == AppLifecycleState.resumed) {
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      );
+    }
   }
 }
