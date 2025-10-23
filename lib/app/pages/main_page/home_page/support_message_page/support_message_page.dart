@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webinar/app/providers/user_provider.dart';
-import 'package:webinar/app/services/user_service/support_service.dart';
-import 'package:webinar/app/widgets/main_widget/support_widget/support_widget.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/date_formater.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/providers/user_provider.dart';
+import 'package:egyptm/app/services/user_service/support_service.dart';
+import 'package:egyptm/app/widgets/main_widget/support_widget/support_widget.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/date_formater.dart';
+import 'package:egyptm/locator.dart';
 
 import '../../../../../common/badges.dart';
 import '../../../../../config/assets.dart';

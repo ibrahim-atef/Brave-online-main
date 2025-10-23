@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/config/assets.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/config/assets.dart';
 
 class RegisterInputWidget extends StatefulWidget {
   final Function(String data) setData;

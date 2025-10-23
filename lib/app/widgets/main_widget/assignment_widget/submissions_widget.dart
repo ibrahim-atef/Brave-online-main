@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webinar/app/models/assignment_model.dart';
-import 'package:webinar/common/badges.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/date_formater.dart';
-import 'package:webinar/config/assets.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/config/styles.dart';
+import 'package:egyptm/app/models/assignment_model.dart';
+import 'package:egyptm/common/badges.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/date_formater.dart';
+import 'package:egyptm/config/assets.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/config/styles.dart';
 
 class SubmissionsWidget{
   

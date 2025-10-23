@@ -3,13 +3,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/constants.dart';
-import 'package:webinar/config/assets.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/config/styles.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/constants.dart';
+import 'package:egyptm/config/assets.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/config/styles.dart';
 
 class MaintenancePage extends StatefulWidget {
   static const String pageName = '/maintenance';

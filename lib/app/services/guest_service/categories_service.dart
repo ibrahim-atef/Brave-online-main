@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart';
-import 'package:webinar/app/models/category_model.dart';
-import 'package:webinar/app/models/filter_model.dart';
+import 'package:egyptm/app/models/category_model.dart';
+import 'package:egyptm/app/models/filter_model.dart';
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/constants.dart';
 import '../../../common/utils/error_handler.dart';

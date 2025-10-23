@@ -1,5 +1,5 @@
-name: webinar
-description: webinar project.
+name: egyptm
+description: Egyptm - منصة كلمني اشارة التعليمية
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -71,7 +71,7 @@ dependencies:
   confetti: ^0.7.0
   animated_flip_counter: ^0.3.4
   fl_chart: ^0.68.0
-  syncfusion_flutter_pdfviewer: ^27.2.4
+  syncfusion_flutter_pdfviewer: ^28.2.7
   timezone: ^0.9.2
   flutter_inappwebview: ^6.0.0
   lottie: ^3.0.0

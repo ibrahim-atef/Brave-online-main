@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webinar/common/data/app_language.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/common/data/app_language.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/locator.dart';
 import '../config/assets.dart';
 
 

@@ -1,8 +1,8 @@
 import 'package:intl/intl.dart';
-import 'package:webinar/app/models/currency_model.dart';
-import 'package:webinar/app/services/guest_service/guest_service.dart';
-import 'package:webinar/common/data/api_public_data.dart';
-import 'package:webinar/common/data/app_data.dart';
+import 'package:egyptm/app/models/currency_model.dart';
+import 'package:egyptm/app/services/guest_service/guest_service.dart';
+import 'package:egyptm/common/data/api_public_data.dart';
+import 'package:egyptm/common/data/app_data.dart';
 
 class CurrencyUtils{
 

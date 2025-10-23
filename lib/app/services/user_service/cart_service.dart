@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:webinar/app/models/cart_model.dart';
-import 'package:webinar/app/models/checkout_model.dart';
-import 'package:webinar/app/providers/user_provider.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/error_handler.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/models/cart_model.dart';
+import 'package:egyptm/app/models/checkout_model.dart';
+import 'package:egyptm/app/providers/user_provider.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/error_handler.dart';
+import 'package:egyptm/locator.dart';
 
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/constants.dart';

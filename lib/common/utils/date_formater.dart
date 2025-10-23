@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
-import 'package:webinar/common/data/app_language.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/common/data/app_language.dart';
+import 'package:egyptm/locator.dart';
 
 extension CustomDate on DateTime {
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:webinar/app/models/notification_model.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/config/styles.dart';
+import 'package:egyptm/app/models/notification_model.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/config/styles.dart';
 
 import '../../../../common/common.dart';
 import '../../../../common/utils/date_formater.dart';

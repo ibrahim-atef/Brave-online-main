@@ -1,4 +1,4 @@
-import 'package:webinar/app/models/course_model.dart';
+import 'package:egyptm/app/models/course_model.dart';
 
 class FavoriteModel {
   int? id;

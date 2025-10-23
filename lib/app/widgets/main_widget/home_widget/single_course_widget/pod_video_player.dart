@@ -2,7 +2,7 @@
 // import 'package:modern_player/modern_player.dart';
 // // import 'package:pod_player/pod_player.dart';
 // import 'package:flutter/material.dart';
-// import 'package:webinar/common/common.dart';
+// import 'package:egyptm/common/common.dart';
 //
 // import '../../../../../test.dart';
 //

@@ -15,7 +15,7 @@ import 'package:flutter/services.dart';
 import '../../../../../common/data/app_data.dart';
 import '../../../../../common/utils/constants.dart';
 import '../../../../services/guest_service/course_service.dart';
-import 'package:webinar/common/components.dart';
+import 'package:egyptm/common/components.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String pageName = '/ChatScreen';

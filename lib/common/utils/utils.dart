@@ -1,8 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/banks_model.dart';
-import 'package:webinar/config/colors.dart';
+import 'package:egyptm/app/models/banks_model.dart';
+import 'package:egyptm/config/colors.dart';
 
 import '../../locator.dart';
 import '../data/app_language.dart';

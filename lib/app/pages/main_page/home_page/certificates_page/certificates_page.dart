@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/certificate_model.dart';
-import 'package:webinar/app/pages/main_page/home_page/certificates_page/certificates_details_page.dart';
-import 'package:webinar/app/providers/user_provider.dart';
-import 'package:webinar/app/services/user_service/certificate_service.dart';
-import 'package:webinar/app/widgets/main_widget/quizzes_widget/quizzes_widget.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/date_formater.dart';
-import 'package:webinar/config/assets.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/models/certificate_model.dart';
+import 'package:egyptm/app/pages/main_page/home_page/certificates_page/certificates_details_page.dart';
+import 'package:egyptm/app/providers/user_provider.dart';
+import 'package:egyptm/app/services/user_service/certificate_service.dart';
+import 'package:egyptm/app/widgets/main_widget/quizzes_widget/quizzes_widget.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/date_formater.dart';
+import 'package:egyptm/config/assets.dart';
+import 'package:egyptm/locator.dart';
 import 'package:html/parser.dart';
 
 class CertificatesPage extends StatefulWidget {

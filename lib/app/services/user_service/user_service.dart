@@ -2,17 +2,17 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:webinar/app/models/course_model.dart';
-import 'package:webinar/app/models/login_history_model.dart';
-import 'package:webinar/app/models/profile_model.dart';
-import 'package:webinar/app/models/purchase_course_model.dart';
-import 'package:webinar/app/models/reward_point_model.dart';
-import 'package:webinar/app/providers/user_provider.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/data/app_data.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/http_handler.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/models/course_model.dart';
+import 'package:egyptm/app/models/login_history_model.dart';
+import 'package:egyptm/app/models/profile_model.dart';
+import 'package:egyptm/app/models/purchase_course_model.dart';
+import 'package:egyptm/app/models/reward_point_model.dart';
+import 'package:egyptm/app/providers/user_provider.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/data/app_data.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/http_handler.dart';
+import 'package:egyptm/locator.dart';
 
 import 'package:dio/dio.dart' as dio;
 

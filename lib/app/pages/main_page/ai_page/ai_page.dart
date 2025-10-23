@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_protector/screen_protector.dart';
-import 'package:webinar/app/pages/main_page/home_page/home_page.dart';
-import 'package:webinar/app/pages/main_page/main_page.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/config/colors.dart';
+import 'package:egyptm/app/pages/main_page/home_page/home_page.dart';
+import 'package:egyptm/app/pages/main_page/main_page.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/config/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AiPage extends StatefulWidget {

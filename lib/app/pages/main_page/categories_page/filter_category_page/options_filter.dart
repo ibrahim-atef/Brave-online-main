@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/providers/filter_course_provider.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/config/styles.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/providers/filter_course_provider.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/config/styles.dart';
+import 'package:egyptm/locator.dart';
 
 import '../../../../../common/components.dart';
 

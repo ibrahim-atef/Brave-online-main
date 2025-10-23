@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/assignment_model.dart';
-import 'package:webinar/app/services/user_service/assignment_service.dart';
-import 'package:webinar/app/widgets/main_widget/assignment_widget/assignment_history_widget.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/enums/error_enum.dart';
-import 'package:webinar/common/utils/app_text.dart';
+import 'package:egyptm/app/models/assignment_model.dart';
+import 'package:egyptm/app/services/user_service/assignment_service.dart';
+import 'package:egyptm/app/widgets/main_widget/assignment_widget/assignment_history_widget.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/enums/error_enum.dart';
+import 'package:egyptm/common/utils/app_text.dart';
 
 import '../../../../../config/colors.dart';
 import '../../../../models/chat_model.dart';

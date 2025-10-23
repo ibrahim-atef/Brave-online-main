@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/course_model.dart';
-import 'package:webinar/app/pages/main_page/home_page/search_page/result_search_page.dart';
-import 'package:webinar/app/services/guest_service/course_service.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/config/styles.dart';
+import 'package:egyptm/app/models/course_model.dart';
+import 'package:egyptm/app/pages/main_page/home_page/search_page/result_search_page.dart';
+import 'package:egyptm/app/services/guest_service/course_service.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/config/styles.dart';
 
 import '../../../../../config/assets.dart';
 

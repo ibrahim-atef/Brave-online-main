@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/single_course_model.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_attachment_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_checkbox_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_datepicker_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_dropdown_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_input_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_radio_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_textarea_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_toggle_widget.dart';
-import 'package:webinar/common/data/app_language.dart';
-import 'package:webinar/locator.dart';
+import 'package:egyptm/app/models/single_course_model.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_attachment_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_checkbox_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_datepicker_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_dropdown_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_input_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_radio_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_textarea_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_toggle_widget.dart';
+import 'package:egyptm/common/data/app_language.dart';
+import 'package:egyptm/locator.dart';
 
 class RegisterConfigModel {
   String? selectedTimezone;

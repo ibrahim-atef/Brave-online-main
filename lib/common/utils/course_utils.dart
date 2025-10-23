@@ -1,6 +1,6 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:webinar/app/models/course_model.dart';
+import 'package:egyptm/app/models/course_model.dart';
 import '../enums/course_enum.dart';
 
 class CourseUtils{

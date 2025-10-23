@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webinar/app/services/authentication_service/authentication_service.dart';
-import 'package:webinar/app/widgets/authentication_widget/auth_widget.dart';
-import 'package:webinar/app/widgets/authentication_widget/country_code_widget/code_country.dart';
-import 'package:webinar/app/widgets/authentication_widget/register_widget/register_widget.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/data/api_public_data.dart';
+import 'package:egyptm/app/services/authentication_service/authentication_service.dart';
+import 'package:egyptm/app/widgets/authentication_widget/auth_widget.dart';
+import 'package:egyptm/app/widgets/authentication_widget/country_code_widget/code_country.dart';
+import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_widget.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/data/api_public_data.dart';
 
 import '../../../common/utils/app_text.dart';
 import '../../../config/assets.dart';

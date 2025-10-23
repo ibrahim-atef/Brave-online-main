@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/models/forum_model.dart';
-import 'package:webinar/app/services/user_service/forum_service.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
+import 'package:egyptm/app/models/forum_model.dart';
+import 'package:egyptm/app/services/user_service/forum_service.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
 
 class SearchForumPage extends StatefulWidget {
   static const String pageName = '/search-forum';

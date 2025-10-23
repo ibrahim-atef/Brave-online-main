@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webinar/app/models/course_model.dart';
-import 'package:webinar/common/badges.dart';
-import 'package:webinar/common/utils/date_formater.dart';
+import 'package:egyptm/app/models/course_model.dart';
+import 'package:egyptm/common/badges.dart';
+import 'package:egyptm/common/utils/date_formater.dart';
 
 import '../../../../common/common.dart';
 import '../../../../common/components.dart';

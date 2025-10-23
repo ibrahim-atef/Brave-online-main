@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/app/pages/main_page/categories_page/categories_page.dart';
-import 'package:webinar/app/pages/main_page/home_page/home_page.dart';
-import 'package:webinar/common/enums/page_name_enum.dart';
+import 'package:egyptm/app/pages/main_page/categories_page/categories_page.dart';
+import 'package:egyptm/app/pages/main_page/home_page/home_page.dart';
+import 'package:egyptm/common/enums/page_name_enum.dart';
 
 import '../pages/main_page/blog_page/blogs_page.dart';
 import '../pages/main_page/classes_page/classes_page.dart';

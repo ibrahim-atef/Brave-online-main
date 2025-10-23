@@ -1,4 +1,4 @@
-import 'package:webinar/app/models/profile_model.dart';
+import 'package:egyptm/app/models/profile_model.dart';
 
 class MeetingTimesModel {
   int? count;

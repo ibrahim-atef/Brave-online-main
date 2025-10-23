@@ -5,13 +5,13 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:hive/hive.dart';
-import 'package:webinar/app/models/content_model.dart';
-import 'package:webinar/app/models/course_model.dart';
-import 'package:webinar/app/models/purchase_course_model.dart';
-import 'package:webinar/app/models/single_content_model.dart';
-import 'package:webinar/app/services/guest_service/course_service.dart';
-import 'package:webinar/app/services/user_service/user_service.dart';
-import 'package:webinar/common/database/model/course_model_db.dart';
+import 'package:egyptm/app/models/content_model.dart';
+import 'package:egyptm/app/models/course_model.dart';
+import 'package:egyptm/app/models/purchase_course_model.dart';
+import 'package:egyptm/app/models/single_content_model.dart';
+import 'package:egyptm/app/services/guest_service/course_service.dart';
+import 'package:egyptm/app/services/user_service/user_service.dart';
+import 'package:egyptm/common/database/model/course_model_db.dart';
 
 class AppDataBase{
 

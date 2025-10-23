@@ -2,8 +2,8 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import 'package:webinar/app/models/meeting_details_model.dart';
-import 'package:webinar/app/services/user_service/meeting_service.dart';
+import 'package:egyptm/app/models/meeting_details_model.dart';
+import 'package:egyptm/app/services/user_service/meeting_service.dart';
 
 import '../../../../common/common.dart';
 import '../../../../common/components.dart';

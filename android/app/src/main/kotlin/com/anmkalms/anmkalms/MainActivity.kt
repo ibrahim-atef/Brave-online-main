@@ -1,4 +1,4 @@
-package com.anmka.braveonline
+package com.anmka.egyptm
 
 import io.flutter.embedding.android.FlutterActivity
 import com.facebook.FacebookSdk;

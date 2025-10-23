@@ -73,7 +73,7 @@
         </intent>
     </queries>
     <application
-        android:label="Brave Online"
+        android:label="Egyptm"
         android:usesCleartextTraffic="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

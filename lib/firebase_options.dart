@@ -70,6 +70,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '343165366695',
     projectId: 'anmka-pathologybro-main',
     storageBucket: 'anmka-pathologybro-main.firebasestorage.app',
-    iosBundleId: 'com.webinar.webinar',
+    iosBundleId: 'com.anmka.egyptm',
   );
 }

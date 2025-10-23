@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
 
 class RegisterToggleWidget extends StatefulWidget {
   final Function(bool data) setData;

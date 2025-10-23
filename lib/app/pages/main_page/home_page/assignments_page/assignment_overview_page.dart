@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import 'package:webinar/app/pages/main_page/home_page/assignments_page/submissions_page.dart';
-import 'package:webinar/app/services/user_service/assignment_service.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
-import 'package:webinar/common/utils/app_text.dart';
-import 'package:webinar/common/utils/date_formater.dart';
-import 'package:webinar/config/colors.dart';
-import 'package:webinar/config/styles.dart';
+import 'package:egyptm/app/pages/main_page/home_page/assignments_page/submissions_page.dart';
+import 'package:egyptm/app/services/user_service/assignment_service.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
+import 'package:egyptm/common/utils/app_text.dart';
+import 'package:egyptm/common/utils/date_formater.dart';
+import 'package:egyptm/config/colors.dart';
+import 'package:egyptm/config/styles.dart';
 
 import '../../../../../config/assets.dart';
 import '../../../../models/assignment_model.dart';

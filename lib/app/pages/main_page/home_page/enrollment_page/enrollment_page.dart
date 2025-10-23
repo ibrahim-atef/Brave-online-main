@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:webinar/app/pages/main_page/main_page.dart';
-import 'package:webinar/common/common.dart';
+import 'package:egyptm/app/pages/main_page/main_page.dart';
+import 'package:egyptm/common/common.dart';
 
 import '../../../../../common/components.dart';
 import '../../../../../common/utils/constants.dart';

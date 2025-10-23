@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:webinar/common/common.dart';
-import 'package:webinar/common/components.dart';
+import 'package:egyptm/common/common.dart';
+import 'package:egyptm/common/components.dart';
 
 import '../../../../../../common/data/app_data.dart';
 
