@@ -1,20 +1,14 @@
-# Egyptm - منصة كلمني اشارة التعليمية
+# Rocket LMS flutter app
 
-## نظرة عامة
+## Getting Started
 
-Egyptm هو تطبيق تعليمي مصري متخصص في منصة "كلمني اشارة" لتعليم لغة الإشارة والمحتوى التعليمي.
+This project is a starting point for a Flutter application.
 
-## المميزات
+A few resources to get you started if this is your first Flutter project:
 
-- واجهة مستخدم حديثة وجذابة
-- نظام ألوان مُحسّن خصيصاً للمنصة
-- دعم كامل للغة العربية
-- تجربة مستخدم سلسة
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-## البدء
-
-هذا المشروع مبني باستخدام Flutter.
-
-للمزيد من المعلومات حول تطوير Flutter:
-- [التوثيق الرسمي](https://docs.flutter.dev/)
-- [أمثلة Flutter](https://docs.flutter.dev/cookbook)
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

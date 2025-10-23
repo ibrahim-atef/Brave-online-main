@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:egyptm/app/models/forum_answer_model.dart';
-import 'package:egyptm/app/models/forum_model.dart';
-import 'package:egyptm/common/utils/http_handler.dart';
+import 'package:webinar/app/models/forum_answer_model.dart';
+import 'package:webinar/app/models/forum_model.dart';
+import 'package:webinar/common/utils/http_handler.dart';
 
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/constants.dart';

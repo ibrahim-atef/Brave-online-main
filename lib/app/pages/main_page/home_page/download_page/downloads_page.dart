@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:egyptm/common/common.dart';
+import 'package:webinar/common/common.dart';
 import '../../../../../common/components.dart';
 
 class DownloadsPage extends StatefulWidget {

@@ -1,5 +1,5 @@
-import 'package:egyptm/app/models/can_model.dart';
-import 'package:egyptm/app/models/user_model.dart';
+import 'package:webinar/app/models/can_model.dart';
+import 'package:webinar/app/models/user_model.dart';
 
 class ForumModel {
   List<Forums>? forums;

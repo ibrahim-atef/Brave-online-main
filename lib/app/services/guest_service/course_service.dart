@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:egyptm/app/models/content_model.dart';
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/models/notice_model.dart';
-import 'package:egyptm/app/models/single_course_model.dart';
-import 'package:egyptm/app/models/user_model.dart';
-import 'package:egyptm/common/data/api_public_data.dart';
-import 'package:egyptm/common/utils/constants.dart';
+import 'package:webinar/app/models/content_model.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/models/notice_model.dart';
+import 'package:webinar/app/models/single_course_model.dart';
+import 'package:webinar/app/models/user_model.dart';
+import 'package:webinar/common/data/api_public_data.dart';
+import 'package:webinar/common/utils/constants.dart';
 import 'package:http/http.dart';
-import 'package:egyptm/common/utils/http_handler.dart';
+import 'package:webinar/common/utils/http_handler.dart';
 
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/error_handler.dart';

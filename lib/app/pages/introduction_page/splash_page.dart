@@ -5,15 +5,15 @@
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:loading_indicator/loading_indicator.dart';
-// import 'package:egyptm/app/pages/introduction_page/intro_page.dart';
-// import 'package:egyptm/app/pages/main_page/main_page.dart';
-// import 'package:egyptm/app/pages/offline_page/internet_connection_page.dart';
-// import 'package:egyptm/app/services/guest_service/guest_service.dart';
-// import 'package:egyptm/common/common.dart';
-// import 'package:egyptm/common/data/app_data.dart';
-// import 'package:egyptm/common/utils/app_text.dart';
-// import 'package:egyptm/config/assets.dart';
-// import 'package:egyptm/config/styles.dart';
+// import 'package:webinar/app/pages/introduction_page/intro_page.dart';
+// import 'package:webinar/app/pages/main_page/main_page.dart';
+// import 'package:webinar/app/pages/offline_page/internet_connection_page.dart';
+// import 'package:webinar/app/services/guest_service/guest_service.dart';
+// import 'package:webinar/common/common.dart';
+// import 'package:webinar/common/data/app_data.dart';
+// import 'package:webinar/common/utils/app_text.dart';
+// import 'package:webinar/config/assets.dart';
+// import 'package:webinar/config/styles.dart';
 //
 // class SplashPage extends StatefulWidget {
 //   static const String pageName = '/splash';

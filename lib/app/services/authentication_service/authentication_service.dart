@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:egyptm/app/models/register_config_model.dart';
-import 'package:egyptm/common/data/app_data.dart';
-import 'package:egyptm/common/enums/error_enum.dart';
-import 'package:egyptm/common/utils/constants.dart';
-import 'package:egyptm/common/utils/error_handler.dart';
-import 'package:egyptm/common/utils/http_handler.dart';
+import 'package:webinar/app/models/register_config_model.dart';
+import 'package:webinar/common/data/app_data.dart';
+import 'package:webinar/common/enums/error_enum.dart';
+import 'package:webinar/common/utils/constants.dart';
+import 'package:webinar/common/utils/error_handler.dart';
+import 'package:webinar/common/utils/http_handler.dart';
 import 'package:http/http.dart';
 
 import '../../../common/data/app_language.dart';

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:egyptm/app/models/currency_model.dart';
-import 'package:egyptm/app/models/register_config_model.dart';
-import 'package:egyptm/common/data/api_public_data.dart';
+import 'package:webinar/app/models/currency_model.dart';
+import 'package:webinar/app/models/register_config_model.dart';
+import 'package:webinar/common/data/api_public_data.dart';
 
 import '../../../common/utils/constants.dart';
 import '../../../common/utils/http_handler.dart';

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:egyptm/app/providers/user_provider.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/providers/user_provider.dart';
+import 'package:webinar/locator.dart';
 
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/constants.dart';

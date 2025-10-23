@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/category_model.dart';
+import 'package:webinar/app/models/category_model.dart';
 
 class ProvidersProvider extends ChangeNotifier{
 

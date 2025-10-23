@@ -2,9 +2,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:egyptm/app/services/authentication_service/authentication_service.dart';
-import 'package:egyptm/app/widgets/authentication_widget/register_widget/register_widget.dart';
-import 'package:egyptm/common/common.dart';
+import 'package:webinar/app/services/authentication_service/authentication_service.dart';
+import 'package:webinar/app/widgets/authentication_widget/register_widget/register_widget.dart';
+import 'package:webinar/common/common.dart';
 
 import '../../../common/data/api_public_data.dart';
 import '../../../common/enums/page_name_enum.dart';

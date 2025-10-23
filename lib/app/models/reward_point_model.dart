@@ -1,4 +1,4 @@
-import 'package:egyptm/app/models/user_model.dart';
+import 'package:webinar/app/models/user_model.dart';
 
 class RewardPointModel {
   LeaderBoard? leaderBoard;

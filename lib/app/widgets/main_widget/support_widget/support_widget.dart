@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:egyptm/app/models/purchase_course_model.dart';
-import 'package:egyptm/app/services/user_service/support_service.dart';
-import 'package:egyptm/app/services/user_service/user_service.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/config/colors.dart';
+import 'package:webinar/app/models/purchase_course_model.dart';
+import 'package:webinar/app/services/user_service/support_service.dart';
+import 'package:webinar/app/services/user_service/user_service.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/config/colors.dart';
 import 'package:image_picker/image_picker.dart' as imagePicker;
 
 import '../../../../common/components.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/register_config_model.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/config/assets.dart';
+import 'package:webinar/app/models/register_config_model.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/config/assets.dart';
 
 class RegisterDropDownWidget extends StatefulWidget {
   final Function(int data) setData;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/filter_model.dart';
+import 'package:webinar/app/models/filter_model.dart';
 
 class FilterCourseProvider extends ChangeNotifier{
 

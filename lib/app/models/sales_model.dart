@@ -1,5 +1,5 @@
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/models/user_model.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/models/user_model.dart';
 
 class SaleModel {
   List<Sales>? sales;

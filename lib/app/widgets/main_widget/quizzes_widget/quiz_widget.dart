@@ -1,6 +1,6 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
-import 'package:egyptm/config/colors.dart';
+import 'package:webinar/config/colors.dart';
 
 import '../../../../common/common.dart';
 import '../../../../common/utils/app_text.dart';

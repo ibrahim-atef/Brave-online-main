@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:egyptm/app/models/content_model.dart';
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/pages/main_page/categories_page/categories_page.dart';
-import 'package:egyptm/app/pages/offline_page/offline_single_content_page.dart';
-import 'package:egyptm/app/widgets/main_widget/home_widget/single_course_widget/single_course_widget.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/database/app_database.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/date_formater.dart';
-import 'package:egyptm/config/assets.dart';
-import 'package:egyptm/config/colors.dart';
+import 'package:webinar/app/models/content_model.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/pages/main_page/categories_page/categories_page.dart';
+import 'package:webinar/app/pages/offline_page/offline_single_content_page.dart';
+import 'package:webinar/app/widgets/main_widget/home_widget/single_course_widget/single_course_widget.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/database/app_database.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/date_formater.dart';
+import 'package:webinar/config/assets.dart';
+import 'package:webinar/config/colors.dart';
 
 class OfflineSingleCoursePage extends StatefulWidget {
   static const String pageName = '/offline-single-course';

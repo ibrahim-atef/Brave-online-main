@@ -1,6 +1,6 @@
-import 'package:egyptm/app/models/chat_model.dart';
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/models/user_model.dart';
+import 'package:webinar/app/models/chat_model.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/models/user_model.dart';
 
 class SupportModel {
   int? id;

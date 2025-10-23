@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/common/components.dart';
+import 'package:webinar/common/components.dart';
 import '../../../../../common/utils/constants.dart';
 import '../../../../services/guest_service/course_service.dart';
 import 'chat_screen.dart';

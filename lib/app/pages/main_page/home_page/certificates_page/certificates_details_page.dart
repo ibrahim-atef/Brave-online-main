@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/download_manager.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/config/styles.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/download_manager.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/config/styles.dart';
 
 import '../../../../../common/data/app_data.dart';
 import '../../../../../common/utils/constants.dart';

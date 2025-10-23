@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/config/styles.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/config/styles.dart';
 
 class AuthWidget{
 

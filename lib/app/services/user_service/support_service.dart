@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
-import 'package:egyptm/app/models/support_model.dart';
-import 'package:egyptm/common/utils/constants.dart';
-import 'package:egyptm/common/utils/http_handler.dart';
+import 'package:webinar/app/models/support_model.dart';
+import 'package:webinar/common/utils/constants.dart';
+import 'package:webinar/common/utils/http_handler.dart';
 import 'package:dio/dio.dart' as dio;
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/error_handler.dart';

@@ -7,7 +7,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Egyptm</string>
+		<string>Webinar</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>Egyptm</string>
+		<string>Brave Online</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -71,7 +71,7 @@
 		<key>FacebookClientToken</key>
 		<string>cc041a5342128d416bf5802d2705630a</string>
 		<key>FacebookDisplayName</key>
-		<string>Egyptm</string>
+		<string>Webinar</string>
 		<key>GIDClientID</key>
 		<string>346142227155-30a9drvvvduc0qboegip572sh6e30aeg.apps.googleusercontent.com</string>
 		<key>LSApplicationQueriesSchemes</key>
@@ -93,11 +93,11 @@
 			<string>_googlecast._tcp</string>
 		</array>
 		<key>NSCalendarsUsageDescription</key>
-		<string>We Need this Access to Set Meeting Time</string>
+		<string>We Need this Access to Set Webinar Time</string>
 		<key>NSCameraUsageDescription</key>
 		<string>This app requires Camera permission.</string>
 		<key>NSContactsUsageDescription</key>
-		<string>We Need this Access to Set Meeting Time</string>
+		<string>We Need this Access to Set Webinar Time</string>
 		<key>NSLocalNetworkUsageDescription</key>
 		<string>Used to search for chromecast devices</string>
 		<key>NSMicrophoneUsageDescription</key>

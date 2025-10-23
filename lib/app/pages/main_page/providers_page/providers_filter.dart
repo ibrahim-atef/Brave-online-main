@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/category_model.dart';
-import 'package:egyptm/app/providers/providers_provider.dart';
-import 'package:egyptm/app/services/guest_service/categories_service.dart';
-import 'package:egyptm/common/common.dart';
+import 'package:webinar/app/models/category_model.dart';
+import 'package:webinar/app/providers/providers_provider.dart';
+import 'package:webinar/app/services/guest_service/categories_service.dart';
+import 'package:webinar/common/common.dart';
 
 import '../../../../common/utils/app_text.dart';
 import '../../../../config/colors.dart';

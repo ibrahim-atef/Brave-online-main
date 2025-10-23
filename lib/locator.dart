@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:egyptm/app/providers/app_language_provider.dart';
-import 'package:egyptm/app/providers/drawer_provider.dart';
-import 'package:egyptm/common/data/app_language.dart';
+import 'package:webinar/app/providers/app_language_provider.dart';
+import 'package:webinar/app/providers/drawer_provider.dart';
+import 'package:webinar/common/data/app_language.dart';
 import 'app/providers/filter_course_provider.dart';
 import 'app/providers/page_provider.dart';
 import 'app/providers/providers_provider.dart';

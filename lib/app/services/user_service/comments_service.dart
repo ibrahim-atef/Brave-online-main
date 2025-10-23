@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:egyptm/common/components.dart';
+import 'package:webinar/common/components.dart';
 
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/constants.dart';

@@ -1,5 +1,5 @@
-import 'package:egyptm/app/models/banks_model.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/models/banks_model.dart';
+import 'package:webinar/locator.dart';
 
 import '../../common/data/app_language.dart';
 

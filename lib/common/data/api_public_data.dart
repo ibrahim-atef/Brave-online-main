@@ -1,5 +1,5 @@
 
-import 'package:egyptm/app/models/currency_model.dart';
+import 'package:webinar/app/models/currency_model.dart';
 
 class PublicData{
 

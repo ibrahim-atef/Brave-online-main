@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/config/assets.dart';
-import 'package:egyptm/config/colors.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/config/assets.dart';
+import 'package:webinar/config/colors.dart';
 
 class RegisterDatePickerWidget extends StatefulWidget {
   final Function(String data) setData;

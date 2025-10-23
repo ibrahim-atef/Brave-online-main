@@ -1,7 +1,7 @@
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/models/single_course_model.dart';
-import 'package:egyptm/common/data/app_language.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/models/single_course_model.dart';
+import 'package:webinar/common/data/app_language.dart';
+import 'package:webinar/locator.dart';
 
 class ListQuizModel {
   int? id;

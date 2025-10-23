@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:egyptm/app/models/banks_model.dart';
-import 'package:egyptm/app/models/offline_payment_model.dart';
-import 'package:egyptm/app/models/payout_model.dart';
-import 'package:egyptm/app/models/sales_model.dart';
-import 'package:egyptm/app/models/summary_model.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/constants.dart';
+import 'package:webinar/app/models/banks_model.dart';
+import 'package:webinar/app/models/offline_payment_model.dart';
+import 'package:webinar/app/models/payout_model.dart';
+import 'package:webinar/app/models/sales_model.dart';
+import 'package:webinar/app/models/summary_model.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/constants.dart';
 import 'package:dio/dio.dart' as dio;
 import '../../../common/enums/error_enum.dart';
 import '../../../common/utils/error_handler.dart';

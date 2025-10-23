@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:egyptm/app/providers/user_provider.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/providers/user_provider.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/locator.dart';
 
 class InstructorChatPage extends StatefulWidget {
   static const String pageName = '/instructor-chat-page';

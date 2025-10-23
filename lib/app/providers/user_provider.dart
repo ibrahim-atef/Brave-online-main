@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/profile_model.dart';
+import 'package:webinar/app/models/profile_model.dart';
 
 import '../models/cart_model.dart';
 import '../models/notification_model.dart';

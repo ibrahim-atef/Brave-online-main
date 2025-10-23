@@ -1,6 +1,6 @@
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/models/quize_model.dart';
-import 'package:egyptm/app/models/user_model.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/models/quize_model.dart';
+import 'package:webinar/app/models/user_model.dart';
 
 class CertificateModel {
   int? id;

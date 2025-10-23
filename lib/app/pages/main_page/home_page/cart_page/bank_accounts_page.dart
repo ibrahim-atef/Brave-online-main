@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/services/user_service/financial_service.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/constants.dart';
-import 'package:egyptm/common/utils/utils.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/config/styles.dart';
+import 'package:webinar/app/services/user_service/financial_service.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/constants.dart';
+import 'package:webinar/common/utils/utils.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/config/styles.dart';
 
 class BankAccountsPage extends StatefulWidget {
   static const String pageName = '/bank-accounts';

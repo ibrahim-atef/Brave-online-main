@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:egyptm/app/pages/authentication_page/login_page.dart';
-import 'package:egyptm/app/pages/authentication_page/register_page.dart';
-import 'package:egyptm/app/pages/main_page/main_page.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/config/styles.dart';
+import 'package:webinar/app/pages/authentication_page/login_page.dart';
+import 'package:webinar/app/pages/authentication_page/register_page.dart';
+import 'package:webinar/app/pages/main_page/main_page.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/config/styles.dart';
 
 import '../../../config/colors.dart';
 

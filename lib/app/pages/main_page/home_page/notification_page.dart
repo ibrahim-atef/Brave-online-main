@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:egyptm/app/providers/user_provider.dart';
-import 'package:egyptm/app/services/user_service/user_service.dart';
-import 'package:egyptm/app/widgets/main_widget/home_widget/notification_widget.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/date_formater.dart';
-import 'package:egyptm/config/assets.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/config/styles.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/providers/user_provider.dart';
+import 'package:webinar/app/services/user_service/user_service.dart';
+import 'package:webinar/app/widgets/main_widget/home_widget/notification_widget.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/date_formater.dart';
+import 'package:webinar/config/assets.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/config/styles.dart';
+import 'package:webinar/locator.dart';
 
 class NotificationPage extends StatefulWidget {
   static const String pageName = '/notification';

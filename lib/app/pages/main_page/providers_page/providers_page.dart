@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:egyptm/app/pages/main_page/providers_page/providers_filter.dart';
-import 'package:egyptm/app/pages/main_page/providers_page/user_profile_page/user_profile_page.dart';
-import 'package:egyptm/app/providers/app_language_provider.dart';
-import 'package:egyptm/app/services/guest_service/providers_service.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/shimmer_component.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/config/assets.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/pages/main_page/providers_page/providers_filter.dart';
+import 'package:webinar/app/pages/main_page/providers_page/user_profile_page/user_profile_page.dart';
+import 'package:webinar/app/providers/app_language_provider.dart';
+import 'package:webinar/app/services/guest_service/providers_service.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/shimmer_component.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/config/assets.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/locator.dart';
 
 import '../../../../common/utils/object_instance.dart';
 import '../../../../common/utils/tablet_detector.dart';

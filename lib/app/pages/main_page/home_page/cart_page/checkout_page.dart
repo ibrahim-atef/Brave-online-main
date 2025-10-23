@@ -2,19 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import 'package:egyptm/app/models/checkout_model.dart';
-import 'package:egyptm/app/pages/main_page/main_page.dart';
-import 'package:egyptm/app/services/user_service/cart_service.dart';
-import 'package:egyptm/app/widgets/main_widget/home_widget/cart_widget.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/enums/error_enum.dart';
-import 'package:egyptm/common/utils/app_text.dart';
-import 'package:egyptm/common/utils/constants.dart';
-import 'package:egyptm/common/utils/currency_utils.dart';
-import 'package:egyptm/config/assets.dart';
-import 'package:egyptm/config/colors.dart';
-import 'package:egyptm/config/styles.dart';
+import 'package:webinar/app/models/checkout_model.dart';
+import 'package:webinar/app/pages/main_page/main_page.dart';
+import 'package:webinar/app/services/user_service/cart_service.dart';
+import 'package:webinar/app/widgets/main_widget/home_widget/cart_widget.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/enums/error_enum.dart';
+import 'package:webinar/common/utils/app_text.dart';
+import 'package:webinar/common/utils/constants.dart';
+import 'package:webinar/common/utils/currency_utils.dart';
+import 'package:webinar/config/assets.dart';
+import 'package:webinar/config/colors.dart';
+import 'package:webinar/config/styles.dart';
 
 import '../single_course_page/single_content_page/web_view_page.dart';
 

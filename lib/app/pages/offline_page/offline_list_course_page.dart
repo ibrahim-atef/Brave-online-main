@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:egyptm/app/models/course_model.dart';
-import 'package:egyptm/app/pages/offline_page/offline_single_course_page.dart';
-import 'package:egyptm/app/widgets/main_widget/classes_widget/classes_widget.dart';
-import 'package:egyptm/common/common.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/database/app_database.dart';
-import 'package:egyptm/common/utils/app_text.dart';
+import 'package:webinar/app/models/course_model.dart';
+import 'package:webinar/app/pages/offline_page/offline_single_course_page.dart';
+import 'package:webinar/app/widgets/main_widget/classes_widget/classes_widget.dart';
+import 'package:webinar/common/common.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/database/app_database.dart';
+import 'package:webinar/common/utils/app_text.dart';
 
 class OfflineListCoursePage extends StatefulWidget {
   static const String pageName = '/offline-list-course';

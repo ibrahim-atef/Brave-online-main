@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:egyptm/app/models/currency_model.dart';
-import 'package:egyptm/common/components.dart';
-import 'package:egyptm/common/data/api_public_data.dart';
-import 'package:egyptm/common/data/app_data.dart';
-import 'package:egyptm/common/data/app_language.dart';
-import 'package:egyptm/common/utils/currency_utils.dart';
-import 'package:egyptm/locator.dart';
+import 'package:webinar/app/models/currency_model.dart';
+import 'package:webinar/common/components.dart';
+import 'package:webinar/common/data/api_public_data.dart';
+import 'package:webinar/common/data/app_data.dart';
+import 'package:webinar/common/data/app_language.dart';
+import 'package:webinar/common/utils/currency_utils.dart';
+import 'package:webinar/locator.dart';
 
 import '../../../common/common.dart';
 import '../../../common/enums/page_name_enum.dart';
