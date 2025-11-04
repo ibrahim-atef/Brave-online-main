@@ -64,7 +64,7 @@ dependencies:
   flutter_slidable: ^3.1.2
   webview_flutter: ^4.4.2
 
-  youtube_player_flutter:
+  # youtube_player_flutter: # Replaced with WebView
 
   flutter_tts: ^4.0.2
   table_calendar: ^3.0.9
