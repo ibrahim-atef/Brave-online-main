@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
-import 'package:webinar/common/common.dart';
 
 class FullScreenVideoPlayer extends StatefulWidget {
   final String name;
@@ -31,7 +31,6 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
     chewieController = ChewieController(
       videoPlayerController: widget.videoPlayerController,
 
-
       // overlay: Align(
       //   alignment: Alignment.center,
       //   child: Text(widget.name,style: TextStyle(
@@ -44,7 +43,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
     );
 
     // إعداد الـ Timer لتحريك النص
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       setState(() {
         if (_watermarkPositionX == 0.0 && _watermarkPositionY == 0.0) {
           // تحريك النص نحو المنتصف
@@ -63,6 +62,17 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
   void dispose() {
     _timer.cancel(); // إيقاف الـ Timer عند التخلص من الشاشة
     chewieController.dispose();
+
+    // استعادة إعدادات الـ system UI عند إغلاق الفيديو
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
+
     super.dispose();
   }
 
@@ -79,7 +89,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
               controller: chewieController,
             ),
             AnimatedPositioned(
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
               // مدة الحركة
               // الحساب لتحديد مكان العلامة المائية أفقيًا ورأسيًا في وسط الفيديو
               right: _watermarkPositionX == 0.0
@@ -92,7 +102,7 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
                   : (MediaQuery.of(context).size.height / 2) - 50,
               // المنتصف رأسياً (حيث أن ارتفاع الشاشة هو 250، نقوم بتحديد المنتصف عن طريق الحساب)
               child: Container(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 color: Colors.transparent,
                 child: Text(
                   widget.name,
@@ -110,67 +120,66 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
               bottom: 50,
               left: 20,
               right: 20,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // زر التأخير
-                    GestureDetector(
-                      onTap: () {
-                        final currentPosition =
-                            widget.videoPlayerController.value.position;
-                        final rewindPosition =
-                            currentPosition - Duration(seconds: 10);
-                        widget.videoPlayerController.seekTo(
-                          rewindPosition > Duration.zero
-                              ? rewindPosition
-                              : Duration.zero,
-                        );
-                      },
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          // color: Colors.black.withOpacity(0.5),
-                        ),
-                        child: Icon(
-                          Icons.replay_10,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                // زر التأخير
+                GestureDetector(
+                  onTap: () {
+                    final currentPosition =
+                        widget.videoPlayerController.value.position;
+                    final rewindPosition =
+                        currentPosition - const Duration(seconds: 10);
+                    widget.videoPlayerController.seekTo(
+                      rewindPosition > Duration.zero
+                          ? rewindPosition
+                          : Duration.zero,
+                    );
+                  },
+                  child: Container(
+                    width: 25,
+                    height: 25,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      // color: Colors.black.withOpacity(0.5),
                     ),
-                    SizedBox(width: 20),
-                    // زر التقديم
-                    GestureDetector(
-                      onTap: () {
-                        final currentPosition =
-                            widget.videoPlayerController.value.position;
-                        final maxDuration =
-                            widget.videoPlayerController.value.duration;
-                        final forwardPosition =
-                            currentPosition + Duration(seconds: 10);
-                        widget.videoPlayerController.seekTo(
-                          forwardPosition < maxDuration
-                              ? forwardPosition
-                              : maxDuration,
-                        );
-                      },
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          // color: Colors.black.withOpacity(0.5),
-                        ),
-                        child: Icon(
-                          Icons.forward_10,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
+                    child: const Icon(
+                      Icons.replay_10,
+                      color: Colors.white,
+                      size: 30,
                     ),
-                  ]),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                // زر التقديم
+                GestureDetector(
+                  onTap: () {
+                    final currentPosition =
+                        widget.videoPlayerController.value.position;
+                    final maxDuration =
+                        widget.videoPlayerController.value.duration;
+                    final forwardPosition =
+                        currentPosition + const Duration(seconds: 10);
+                    widget.videoPlayerController.seekTo(
+                      forwardPosition < maxDuration
+                          ? forwardPosition
+                          : maxDuration,
+                    );
+                  },
+                  child: Container(
+                    width: 25,
+                    height: 25,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      // color: Colors.black.withOpacity(0.5),
+                    ),
+                    child: const Icon(
+                      Icons.forward_10,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ]),
             ),
           ],
         ),
